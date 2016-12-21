@@ -8,14 +8,28 @@
 #include "Header.h"
 #include "object.h"
 
-using matrice =  std::vector < std::vector < std::unique_ptr<Object>>> ;
+const int board_width = 8;
+const int board_height = 8;
+
+
+using matrice =  std::vector<std::vector<std::unique_ptr<Object>>>;
 
 class Board {
 private:
-    matrice my_board;
+    matrice board;
 public:
-    Board();
+    explicit  Board();
+    Board(const Board&) = delete;
+    Board& operator=(const Board&) = delete;
+    ~Board() = default;
+
     void display();
+
+
+    const std::unique_ptr<Object>&getBoard
+            (const unsigned int& i ,const unsigned int& j) const {
+        return board[i][j];
+    }
 
 
 };

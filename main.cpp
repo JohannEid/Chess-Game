@@ -1,7 +1,10 @@
 #include "Header.h"
 #include "object.h"
+#include "Board.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    Board my_board;
+    my_board.display();
+
     return 0;
 }
