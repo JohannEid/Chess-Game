@@ -30,7 +30,7 @@ public:
 
 
     const std::unique_ptr<Object>&getBoard
-            (const unsigned int& i ,const unsigned int& j) const {
+            (const  int& i ,const  int& j) const {
         return board[i][j];
     }
 

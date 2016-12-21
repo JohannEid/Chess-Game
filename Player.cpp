@@ -40,12 +40,12 @@ const std::pair<int, int> Player::pawnSelection(Board &board) {
             if (board.getBoard(x, y)->getSide() == getSide()) {
                 break;
             } else
-                throw std::domain_error("Can't choose to perform this action");
+                throw std::domain_error("Please select valid coordinates !");
 
 
         }
         catch (std::exception const &e) {
-            std::cerr << "Erreur" << e.what() << std::endl;
+            std::cerr << "Error" << e.what() << std::endl;
         }
     }
     return std::make_pair(x, y);

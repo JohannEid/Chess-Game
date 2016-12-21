@@ -31,8 +31,8 @@ public:
 
     Object &operator=(const Object &) = delete;
 
-    ~Object() = default;
 
+    virtual ~Object() {}
 
     explicit Object(char widget, Player_side side,std::string name) :
             widget(widget), side(side), name(name) {}
@@ -71,7 +71,6 @@ private:
 
 
 public:
-    virtual ~Pawn() {}
 
     Pawn(Player_side side, char widget = 'P',std::string name = "Pawn") : Object(widget, side,name) {}
 
