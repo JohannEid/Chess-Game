@@ -61,6 +61,8 @@ public:
         return name;
     }
 
+    virtual void move(Board &){}
+
 
 };
 
@@ -73,7 +75,7 @@ public:
 
     Pawn(Player_side side, char widget = 'P',std::string name = "Pawn") : Object(widget, side,name) {}
 
-    virtual void move(Board &);
+     void move(Board &);
 
 };
 
