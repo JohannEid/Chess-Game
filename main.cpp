@@ -3,8 +3,7 @@
 #include "Board.h"
 
 int main() {
-//    my_board.display();
-std:: unique_ptr<Object> otr = std:: make_unique<Object> ();
-    otr->display();
+    Board my_board; 
+ my_board.display();
     return 0;
 }

@@ -19,6 +19,7 @@ enum class Player_side {
 class Object {
 private:
     char widget = 'o';
+    std::string name = "empty";
     Player_side side = Player_side::NONE;
 
 
@@ -33,7 +34,8 @@ public:
     ~Object() = default;
 
 
-    explicit Object(char widget, Player_side side) : widget(widget), side(side) {}
+    explicit Object(char widget, Player_side side,std::string name) :
+            Object :: widget(widget), Object :: side(side),Object :: name(name) {}
 
     void display() {
         std::cout << getWidget() << " ";
@@ -55,6 +57,10 @@ public:
         Object::side = side;
     }
 
+    const std::string &getName() const {
+        return name;
+    }
+
 
 };
 
@@ -65,7 +71,7 @@ private:
 public:
     virtual ~Pawn() {}
 
-    Pawn(Player_side side, char widget = 'P') : Object(widget, side) {}
+    Pawn(Player_side side, char widget = 'P',std::string name = "Pawn") : Object(widget, side,name) {}
 
     virtual void move(Board &);
 
@@ -74,35 +80,35 @@ public:
 class Tower : public Pawn {
 public:
 
-    Tower(Player_side side) : Pawn(side, 'T') {}
+    Tower(Player_side side) : Pawn(side, 'T',"Tower") {}
 
     void move(Board &);
 };
 
 class Knight : public Pawn {
 public:
-    Knight(Player_side side) : Pawn(side, 'N') {}
+    Knight(Player_side side) : Pawn(side, 'N',"Knight") {}
 
     void move(Board &);
 };
 
 class Crazy : public Pawn {
 public:
-    Crazy(Player_side side) : Pawn(side, 'C') {}
+    Crazy(Player_side side) : Pawn(side, 'C',"Crazy") {}
 
     void move(Board &);
 };
 
 class Queen : public Pawn {
 public:
-    Queen(Player_side side) : Pawn(side, 'Q') {}
+    Queen(Player_side side) : Pawn(side, 'Q',"Queen") {}
 
     void move(Board &);
 };
 
 class King : public Pawn {
 public:
-    King(Player_side side) : Pawn(side, 'K') {}
+    King(Player_side side) : Pawn(side, 'K',"King") {}
 
     void move(Board &);
 };

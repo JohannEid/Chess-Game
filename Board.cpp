@@ -13,9 +13,6 @@ Board::Board() {
             board[i].push_back(std::make_unique<Object>());
         }
     }
-
-
-
 }
 
 void Board::display() {
@@ -24,5 +21,6 @@ void Board::display() {
             getBoard(i, j)->display();
 
         }
+        std::cout << std::endl;
     }
 }
