@@ -24,7 +24,16 @@ private:
 
 public:
 
-    Object(char widget, Player_side side) : widget(widget), side(side) {}
+    explicit Object() {}
+
+    Object(const Object &) = delete;
+
+    Object &operator=(const Object &) = delete;
+
+    ~Object() = default;
+
+
+    explicit Object(char widget, Player_side side) : widget(widget), side(side) {}
 
     void display() {
         std::cout << getWidget() << " ";
@@ -51,21 +60,12 @@ public:
 
 class Pawn : public Object {
 private:
-    bool on_board = true;
 
 
 public:
     virtual ~Pawn() {}
 
-    Pawn(Player_side side, char widget = 'P') : Object(widget, side), on_board(true) {}
-
-    bool isOn_board() const {
-        return on_board;
-    }
-
-    void setOn_board(bool on_board) {
-        Pawn::on_board = on_board;
-    }
+    Pawn(Player_side side, char widget = 'P') : Object(widget, side) {}
 
     virtual void move(Board &);
 

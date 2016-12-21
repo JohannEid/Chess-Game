@@ -18,9 +18,12 @@ class Board {
 private:
     matrice board;
 public:
-    explicit  Board();
-    Board(const Board&) = delete;
-    Board& operator=(const Board&) = delete;
+    explicit Board();
+
+    Board(const Board &) = delete;
+
+    Board &operator=(const Board &) = delete;
+
     ~Board() = default;
 
     void display();
