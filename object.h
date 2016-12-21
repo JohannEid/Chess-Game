@@ -35,7 +35,7 @@ public:
 
 
     explicit Object(char widget, Player_side side,std::string name) :
-            Object :: widget(widget), Object :: side(side),Object :: name(name) {}
+            widget(widget), side(side), name(name) {}
 
     void display() {
         std::cout << getWidget() << " ";

@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>440</x>
-      <y>530</y>
+      <x>310</x>
+      <y>620</y>
       <w>130</w>
       <h>180</h>
     </coordinates>
@@ -18,8 +18,8 @@ void(Board)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>250</y>
+      <x>410</x>
+      <y>340</y>
       <w>210</w>
       <h>190</h>
     </coordinates>
@@ -34,14 +34,14 @@ void(Board)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>10</y>
+      <x>800</x>
+      <y>120</y>
       <w>210</w>
       <h>190</h>
     </coordinates>
-    <panel_attributes>Object 
+    <panel_attributes>Player
 --
--widget : char 
+side : Player_side
 --
 +display: void ()
 
@@ -52,8 +52,8 @@ void(Board)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>760</x>
-      <y>530</y>
+      <x>630</x>
+      <y>620</y>
       <w>140</w>
       <h>180</h>
     </coordinates>
@@ -66,8 +66,8 @@ void(Board)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>600</x>
-      <y>530</y>
+      <x>470</x>
+      <y>620</y>
       <w>130</w>
       <h>180</h>
     </coordinates>
@@ -80,8 +80,8 @@ void(Board)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>930</x>
-      <y>530</y>
+      <x>800</x>
+      <y>620</y>
       <w>130</w>
       <h>180</h>
     </coordinates>
@@ -94,8 +94,8 @@ void(Board)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>260</x>
-      <y>530</y>
+      <x>130</x>
+      <y>620</y>
       <w>130</w>
       <h>180</h>
     </coordinates>
@@ -109,8 +109,8 @@ void(Board)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>130</x>
-      <y>50</y>
+      <x>0</x>
+      <y>140</y>
       <w>270</w>
       <h>190</h>
     </coordinates>
@@ -126,8 +126,8 @@ display:void()
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>500</x>
-      <y>430</y>
+      <x>370</x>
+      <y>520</y>
       <w>160</w>
       <h>120</h>
     </coordinates>
@@ -137,8 +137,8 @@ display:void()
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>620</x>
-      <y>430</y>
+      <x>490</x>
+      <y>520</y>
       <w>80</w>
       <h>120</h>
     </coordinates>
@@ -148,8 +148,8 @@ display:void()
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>320</x>
-      <y>430</y>
+      <x>190</x>
+      <y>520</y>
       <w>340</w>
       <h>120</h>
     </coordinates>
@@ -159,8 +159,8 @@ display:void()
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>620</x>
-      <y>430</y>
+      <x>490</x>
+      <y>520</y>
       <w>210</w>
       <h>120</h>
     </coordinates>
@@ -170,8 +170,8 @@ display:void()
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>620</x>
-      <y>430</y>
+      <x>490</x>
+      <y>520</y>
       <w>380</w>
       <h>120</h>
     </coordinates>
@@ -181,12 +181,30 @@ display:void()
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>640</x>
-      <y>190</y>
+      <x>510</x>
+      <y>290</y>
       <w>30</w>
-      <h>80</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>430</x>
+      <y>110</y>
+      <w>210</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Object 
+--
+-widget : char 
+--
++display: void ()
+
+
+</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
