@@ -22,19 +22,16 @@ private:
     std::string name = "empty";
     Player_side side = Player_side::NONE;
 
+    std::pair<int, int> inputCoordinates(Board &);
+
 
 public:
+    virtual ~Object() {}
 
     explicit Object() {}
 
-    Object(const Object &) = delete;
 
-    Object &operator=(const Object &) = delete;
-
-
-    virtual ~Object() {}
-
-    explicit Object(char widget, Player_side side,std::string name) :
+    explicit Object(char widget, Player_side side, std::string name) :
             widget(widget), side(side), name(name) {}
 
     void display() {
@@ -61,7 +58,7 @@ public:
         return name;
     }
 
-    virtual void move(Board &){}
+    virtual void move(Board &, const int &x, const int &y);
 
 
 };
@@ -72,46 +69,46 @@ private:
 
 public:
 
-    Pawn(Player_side side, char widget = 'P',std::string name = "Pawn") : Object(widget, side,name) {}
+    Pawn(Player_side side, char widget = 'P', std::string name = "Pawn") : Object(widget, side, name) {}
 
-     void move(Board &);
+    void move(Board &, const int &x, const int &y);
 
 };
 
 class Tower : public Pawn {
 public:
 
-    Tower(Player_side side) : Pawn(side, 'T',"Tower") {}
+    Tower(Player_side side) : Pawn(side, 'T', "Tower") {}
 
-    void move(Board &);
+    void move(Board &, const int &x, const int &y);
 };
 
 class Knight : public Pawn {
 public:
-    Knight(Player_side side) : Pawn(side, 'N',"Knight") {}
+    Knight(Player_side side) : Pawn(side, 'N', "Knight") {}
 
-    void move(Board &);
+    void move(Board &, const int &x, const int &y);
 };
 
 class Crazy : public Pawn {
 public:
-    Crazy(Player_side side) : Pawn(side, 'C',"Crazy") {}
+    Crazy(Player_side side) : Pawn(side, 'C', "Crazy") {}
 
-    void move(Board &);
+    void move(Board &, const int &x, const int &y);
 };
 
 class Queen : public Pawn {
 public:
-    Queen(Player_side side) : Pawn(side, 'Q',"Queen") {}
+    Queen(Player_side side) : Pawn(side, 'Q', "Queen") {}
 
-    void move(Board &);
+    void move(Board &, const int &x, const int &y);
 };
 
 class King : public Pawn {
 public:
-    King(Player_side side) : Pawn(side, 'K',"King") {}
+    King(Player_side side) : Pawn(side, 'K', "King") {}
 
-    void move(Board &);
+    void move(Board &, const int &x, const int &y);
 };
 
 

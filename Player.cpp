@@ -8,7 +8,7 @@ void Player::choice_of_action(Board &board) {
     std::pair<int, int> my_coordinates = pawnSelection(board);
     int x{my_coordinates.first};
     int y{my_coordinates.second};
-    board.getBoard(x, y)->move(board);
+    board.getBoard(x, y)->move(board,x,y);
 
 }
 
@@ -34,13 +34,16 @@ const std::pair<int, int> Player::pawnSelection(Board &board) {
             std::cin >> ix;
             std::cin >> iy;
 
-            x = std::stoi(ix);
-            y = std::stoi(ix);
+            x = std::stoi(ix) - 1;
+            y = std::stoi(ix) - 1;
 
-            if (board.getBoard(x, y)->getSide() == getSide()) {
-                break;
+            if ((x < board_width) && (x >= 0) && (y < board_height) && (y >= 0)) {
+                if (board.getBoard(x, y)->getSide() == getSide()) {
+                    break;
+                } else
+                    throw std::domain_error("Please select one of your pawns !");
             } else
-                throw std::domain_error("Please select valid coordinates !");
+                throw std::domain_error("Invalid coordinates outside of board  !");
 
 
         }

@@ -7,7 +7,7 @@
 
 #include "Header.h"
 #include "object.h"
-
+class Object;
 const int board_width = 8;
 const int board_height = 8;
 
@@ -17,14 +17,9 @@ using matrice =  std::vector<std::vector<std::unique_ptr<Object>>>;
 class Board {
 private:
     matrice board;
+    int number_of_turns = 0;
 public:
     explicit Board();
-
-    Board(const Board &) = delete;
-
-    Board &operator=(const Board &) = delete;
-
-    ~Board() = default;
 
     void display();
 

@@ -3,6 +3,8 @@
 //
 
 #include "Board.h"
+#include "object.h"
+
 
 const int raw_pawn_lhs = 1;
 const int raw_pawn_rhs = 6;

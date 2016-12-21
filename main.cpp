@@ -8,6 +8,9 @@ int main() {
     Player a(Player_side::LEFT);
     Player b(Player_side::RIGHT);
 
+    a.choice_of_action(my_board);
+    b.choice_of_action(my_board);
+
 
     my_board.display();
     return 0;

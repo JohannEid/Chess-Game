@@ -3,17 +3,64 @@
 //
 
 #include "object.h"
+#include "Board.h"
 
-void King::move(Board &) {
+
+std::pair<int, int> Object::inputCoordinates(Board &board) {
+    std::string ix{" "};
+    std::string iy{" "};
+    int x{0};
+    int y{0};
+    while (true) {
+        std::cout << "Please select a pawn to move " << std::endl;
+        try {
+            std::cin >> ix;
+            std::cin >> iy;
+
+            x = std::stoi(ix) - 1;
+            y = std::stoi(ix) - 1;
+
+            if ((x < board_width) && (x >= 0) && (y < board_height) && (y >= 0)) {
+                if (board.getBoard(x, y)->getSide() == getSide()) {
+                    throw std::domain_error("You cannot move on one of your pawns  !");
+                } else
+                    break;
+            } else
+                throw std::domain_error("Invalid coordinates outside of board  !");
+
+
+        }
+        catch (std::exception const &e) {
+            std::cerr << "Error" << e.what() << std::endl;
+        }
+
+    }
+    return std::make_pair(x, y);
 }
-void Tower::move(Board &) {
+
+void Object::move(Board &board, const int &x, const int &y) {
+    inputCoordinates(board);
+
 }
-void Knight::move(Board &) {
+void Pawn::move(Board &, const int &x, const int &y) {
+    
 }
-void Pawn::move(Board &) {
+
+
+void King::move(Board &, const int &x, const int &y) {
+
 }
-void Crazy::move(Board &) {
+
+void Tower::move(Board &, const int &x, const int &y) {
 }
-void Queen::move(Board &) {
+
+void Knight::move(Board &, const int &x, const int &y) {
+}
+
+
+void Crazy::move(Board &, const int &x, const int &y) {
+}
+
+void Queen::move(Board &, const int &x, const int &y) {
 }
 
