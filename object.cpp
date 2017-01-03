@@ -43,7 +43,7 @@ void Object::move(Board &board, const int &x, const int &y) {
 
 }
 void Pawn::move(Board &, const int &x, const int &y) {
-    
+
 }
 
 

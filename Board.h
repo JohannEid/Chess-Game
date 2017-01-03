@@ -29,6 +29,14 @@ public:
         return board[i][j];
     }
 
+    int getNumber_of_turns() const {
+        return number_of_turns;
+    }
+
+    void setNumber_of_turns(int number_of_turns) {
+        Board::number_of_turns = number_of_turns;
+    }
+
 
 };
 
