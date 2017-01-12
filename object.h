@@ -4,7 +4,6 @@
 
 #ifndef CHESS_GAME_OBJECT_H
 #define CHESS_GAME_OBJECT_H
-
 #include "Header.h"
 const int left_pawn_starting = 1;
 const int right_pawn_starting = 1;
@@ -73,6 +72,7 @@ private:
      int sideToDirection();
     virtual const std::vector < std::pair <int,int >> getMovePossibilites(const Board&,const int& x , const int& y);
     void displayMovePossibilities (const std::vector <std::pair<int,int>> &);
+    const std::pair <int,int> selectPositionToMove (const std::vector<std::pair<int,int>>& );
 
 
 

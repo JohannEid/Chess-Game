@@ -24,7 +24,7 @@ public:
     void display();
 
 
-    const std::unique_ptr<Object>&getBoard
+    const std::unique_ptr<Object> & getBoard
             (const  int& i ,const  int& j) const {
         return board[i][j];
     }

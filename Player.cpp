@@ -8,7 +8,7 @@ void Player::choice_of_action(Board &board) {
     std::pair<int, int> my_coordinates = pawnSelection(board);
     int x{my_coordinates.first};
     int y{my_coordinates.second};
-    board.getBoard(x, y)->move(board,x,y);
+    board.getBoard(x, y)->move(board, x, y);
 
 }
 

@@ -39,6 +39,7 @@ std::pair<int, int> Object::inputCoordinates(Board &board) {
 }
 
 void Object::move(Board &board, const int &x, const int &y) {
+    std::cout << "Called"<<std::endl;
     inputCoordinates(board);
 
 }
@@ -51,6 +52,8 @@ const char Object::sideToChar() {
 
 void Pawn::move(Board &board, const int &x, const int &y) {
     std::vector<std::pair<int, int>> my_moves{getMovePossibilites(board, x, y)};
+    displayMovePossibilities(my_moves);
+
 
 
 }
@@ -65,6 +68,7 @@ const std::vector<std::pair<int, int >> Pawn::getMovePossibilites(const Board &b
     std::vector<std::pair<int, int>> my_moves;
     int to_move_x_two = x + (2 * sideToDirection());
     int to_move_x_one = x + (1 * sideToDirection());
+
     if ((((x == left_pawn_starting) && (getSide() == Player_side::LEFT))
          || ((x == right_pawn_starting) && (getSide() == Player_side::RIGHT))) &&
         (board.getBoard(to_move_x_two, y)->getSide() == Player_side::NONE)) {
@@ -91,10 +95,16 @@ void Pawn::displayMovePossibilities(const std::vector<std::pair<int, int>> &my_m
     if (my_moves.empty()) { std::cout << "You cannot move with this pawn!"; }
     else {
         for (const auto &elem : my_moves) {
-            std::cout << "You can move in x: " << elem.first << std::endl << "y:" << elem.second;
+            std::cout << "You can move in x: " << elem.first + 1 << std::endl << "y:" << elem.second + 1<<std::endl<<std::endl;
         }
     }
 }
+
+const std::pair<int, int> Pawn::selectPositionToMove(const std::vector<std::pair<int, int>> &) {
+
+}
+
+
 
 
 void King::move(Board &, const int &x, const int &y) {
