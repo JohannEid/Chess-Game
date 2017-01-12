@@ -6,6 +6,8 @@
 #define CHESS_GAME_OBJECT_H
 
 #include "Header.h"
+const int left_pawn_starting = 1;
+const int right_pawn_starting = 1;
 
 class Board;
 
@@ -68,7 +70,9 @@ using pointer_to_object= std::unique_ptr<Object>  ;
 
 class Pawn : public Object {
 private:
-    const std::pair <int, int> sideToDirection(const Player_side&);
+     int sideToDirection();
+    const std::vector < std::pair <int,int >> getMovePossibilites(const int& x , const int& y);
+
 
 
 public:

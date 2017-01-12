@@ -50,6 +50,8 @@ const char Object::sideToChar() {
 }
 
 void Pawn::move(Board &board, const int &x, const int &y) {
+    std::vector <std::pair<int,int>> my_moves {getMovePossibilites(x,y)};
+
 /*
     std::pair<int, int> my_way{(0, 0)};
     Player_side my_side{board.getBoard(x, y)->getSide()};
@@ -76,11 +78,21 @@ void Pawn::move(Board &board, const int &x, const int &y) {
 */
 }
 
-const std::pair<int, int> Pawn::sideToDirection(const Player_side &side) {
+int Pawn::sideToDirection() {
 
-    if (side == Player_side::LEFT) { return std::make_pair(1, 0); }
-    return std::make_pair(-1, 0);
+    if (getSide() == Player_side::LEFT) { return 1; }
+    return -1;
+}
 
+const std::vector<std::pair<int, int >> Pawn::getMovePossibilites(const int &x, const int &y) {
+    std::vector<std::pair<int, int>> my_moves;
+    int to_move_x = x + (1 * sideToDirection());
+    if (((x == left_pawn_starting) && (getSide() == Player_side::LEFT))
+        || ((x == right_pawn_starting) && (getSide() == Player_side::RIGHT))) {
+        my_moves.push_back(std::make_pair(x + (2 * sideToDirection()), y));
+    }
+    if ((to_move_x> 0)&&(to_move_x < board_width )){my_moves.push_back(std::make_pair(to_move_x, y));};
+    return my_moves;
 }
 
 
