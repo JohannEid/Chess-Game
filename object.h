@@ -21,8 +21,8 @@ private:
     char widget = 'o';
     std::string name = "empty";
     Player_side side = Player_side::NONE;
-
     std::pair<int, int> inputCoordinates(Board &);
+    const char  sideToChar();
 
 
 public:
@@ -35,7 +35,7 @@ public:
             widget(widget), side(side), name(name) {}
 
     void display() {
-        std::cout << getWidget() << " ";
+        std::cout << getWidget() << sideToChar() <<" ";
     }
 
     char getWidget() const {
@@ -63,8 +63,12 @@ public:
 
 };
 
+using pointer_to_object= std::unique_ptr<Object>  ;
+
+
 class Pawn : public Object {
 private:
+    const std::pair <int, int> sideToDirection(const Player_side&);
 
 
 public:
