@@ -22,7 +22,6 @@ private:
     char widget = 'o';
     std::string name = "empty";
     Player_side side = Player_side::NONE;
-    std::pair<int, int> inputCoordinates(Board &);
     const char  sideToChar();
 
 

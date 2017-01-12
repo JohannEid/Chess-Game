@@ -37,6 +37,9 @@ public:
         Board::number_of_turns = number_of_turns;
     }
 
+    void setBoard (const int& from_x,const int& from_y,
+                   const int& to_x , const int& to_y);
+
 
 };
 

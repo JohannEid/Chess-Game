@@ -59,3 +59,10 @@ void Board::display() {
         std::cout << std::endl;
     }
 }
+
+void Board::setBoard(const int &from_x, const int &from_y, const int &to_x,
+                     const int &to_y) {
+    std::unique_ptr<Object> empty = std::make_unique<Object>();
+    board[to_x][to_y] = std::move(board[from_x][from_y]);
+    board[from_x][from_y] = std::move(empty);
+}
