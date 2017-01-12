@@ -71,7 +71,8 @@ using pointer_to_object= std::unique_ptr<Object>  ;
 class Pawn : public Object {
 private:
      int sideToDirection();
-    const std::vector < std::pair <int,int >> getMovePossibilites(const int& x , const int& y);
+    virtual const std::vector < std::pair <int,int >> getMovePossibilites(const Board&,const int& x , const int& y);
+    void displayMovePossibilities (const std::vector <std::pair<int,int>> &);
 
 
 
