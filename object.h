@@ -6,7 +6,7 @@
 #define CHESS_GAME_OBJECT_H
 #include "Header.h"
 const int left_pawn_starting = 1;
-const int right_pawn_starting = 1;
+const int right_pawn_starting = 6;
 
 class Board;
 

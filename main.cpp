@@ -4,16 +4,19 @@
 #include "Player.h"
 
 int main() {
-    Board my_board;
-    my_board.display();
-
     Player a(Player_side::LEFT);
-    //Player b(Player_side::RIGHT);
+    Player b(Player_side::RIGHT);
+    Board my_board;
+    while (1) {
 
-    a.choice_of_action(my_board);
-   // b.choice_of_action(my_board);
+        my_board.display();
+        a.choice_of_action(my_board);
+        my_board.display();
+        b.choice_of_action(my_board);
+        my_board.display();
+
+    }
 
 
-    my_board.display();
     return 0;
 }

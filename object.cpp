@@ -22,7 +22,7 @@ void Pawn::move(Board &board, const int &x, const int &y) {
     std::vector<std::pair<int, int>> my_moves{getMovePossibilites(board, x, y)};
     displayMovePossibilities(my_moves);
     my_move = selectPositionToMove(my_moves);
-    board.setBoard(x,y,my_move.first,my_move.second);
+    board.setBoard(x, y, my_move.first, my_move.second);
 }
 
 int Pawn::sideToDirection() {
@@ -31,7 +31,8 @@ int Pawn::sideToDirection() {
     return -1;
 }
 
-const std::vector<std::pair<int, int >> Pawn::getMovePossibilites(const Board &board,  const int &x,  const int &y) {
+const std::vector<std::pair<int, int >> Pawn::getMovePossibilites
+        (const Board &board, const int &x, const int &y) {
     std::vector<std::pair<int, int>> my_moves;
     int to_move_x_two = x + (2 * sideToDirection());
     int to_move_x_one = x + (1 * sideToDirection());
@@ -41,6 +42,20 @@ const std::vector<std::pair<int, int >> Pawn::getMovePossibilites(const Board &b
         (board.getBoard(to_move_x_two, y)->getSide() == Player_side::NONE)) {
         my_moves.push_back(std::make_pair(to_move_x_two, y));
     }
+    if ((to_move_x_one > 0) && (to_move_x_one < board_width)) {
+        if ((board.getBoard(to_move_x_one, y)->getSide() == Player_side::NONE))
+            my_moves.push_back(std::make_pair(to_move_x_one, y));
+
+
+        if (((y + 1 < board_height)) && (board.getBoard(to_move_x_one, y + 1)->getSide() != Player_side::NONE &&
+                                         board.getBoard(to_move_x_one, y + 1)->getSide() != getSide()))
+            my_moves.push_back(std::make_pair(to_move_x_one, y + 1));
+
+        if (((y - 1 > 0)) && (board.getBoard(to_move_x_one, y - 1)->getSide() != Player_side::NONE
+                              && board.getBoard(to_move_x_one, y - 1)->getSide() != getSide()))
+            my_moves.push_back(std::make_pair(to_move_x_one, y - 1));
+    }
+    /*
     if (((to_move_x_one > 0) && (to_move_x_one < board_width)) &&
         (board.getBoard(to_move_x_one, y)->getSide() == Player_side::NONE)) {
         my_moves.push_back(std::make_pair(to_move_x_one, y));
@@ -55,6 +70,7 @@ const std::vector<std::pair<int, int >> Pawn::getMovePossibilites(const Board &b
             && board.getBoard(to_move_x_one, y - 1)->getSide() != getSide())) {
         my_moves.push_back(std::make_pair(to_move_x_one, y - 1));
     }
+     */
     return my_moves;
 }
 
@@ -62,8 +78,8 @@ void Pawn::displayMovePossibilities(const std::vector<std::pair<int, int>> &my_m
     if (my_moves.empty()) { std::cout << "You cannot move with this pawn!"; }
     else {
         for (const auto &elem : my_moves) {
-            std::cout << "You can move in x: " << elem.first +1
-                      << std::endl << "y:" << elem.second +1  << std::endl << std::endl;
+            std::cout << "You can move in x: " << elem.first + 1
+                      << std::endl << "y:" << elem.second + 1 << std::endl << std::endl;
         }
     }
 }
@@ -77,7 +93,7 @@ const std::pair<int, int> Pawn::selectPositionToMove
         coordinates = coordinateChoice();
         try {
             for (const auto &elem : my_possibilities) {
-                if (elem == coordinates) {return coordinates; }
+                if (elem == coordinates) { return coordinates; }
             }
             throw std::domain_error("Please select a spot you can move into ! ");
         }
