@@ -94,10 +94,31 @@ const std::pair<int, int> Pawn::selectPositionToMove
 
 const std::vector<std::pair<int, int >> Tower::getMovePossibilites
         (const Board &board, const int &x_from, const int &y_from) {
-    std::vector<std::pair<int, int>> my_moves;
     int x_path{x_from};
     int y_path{y_from};
+    std::vector<std::pair<int, int>> my_moves;
+    std::vector<std::pair<int, int>> coordinates_to_check
+            {std::make_pair(1, 0), std::make_pair(-1, 0),
+             std::make_pair(0, 1), std::make_pair(0, -1)};
+    for (const auto &elem : coordinates_to_check) {
+        x_path = x_from ;
+        y_path = y_from ;
+        while (((x_path + elem.first >= 0) && (x_path + elem.second < board_width)
+                && (y_path + elem.second >= 0) && (y_path + elem.second < board_height))
+               && (board.getBoard(x_path + elem.first, y_path + elem.second)->getSide() != getSide())) {
 
+            x_path += elem.first;
+            y_path += elem.second;
+            my_moves.push_back(std::make_pair(x_path, y_path));
+            if (board.getBoard(x_path, y_path)->getSide() != Player_side::NONE) { break; }
+        }
+    }
+    return my_moves;
+}
+
+
+
+/*
     while ((x_path + 1 < board_width) && (board.getBoard(x_path + 1, y_path)->getSide() != getSide())) {
         ++x_path;
         my_moves.push_back(std::make_pair(x_path, y_path));
@@ -122,8 +143,28 @@ const std::vector<std::pair<int, int >> Tower::getMovePossibilites
         if (board.getBoard(x_path, y_path)->getSide() != Player_side::NONE) { break; }
     }
     return my_moves;
-
+    */
 }
 
 
+const std::vector<std::pair<int, int >> Knight::getMovePossibilites
+        (const Board &board, const int &x_from, const int &y_from) {
+    int x_path{x_from};
+    int y_path{y_from};
+    std::vector<std::pair<int, int>> my_moves;
+    std::vector<std::pair<int, int>> coordinates_to_check
+            {std::make_pair(3, 2), std::make_pair(3, -2), std::make_pair(-3, 2),
+             std::make_pair(-3, -2)};
+    for (auto &elem : coordinates_to_check) { coordinates_to_check.push_back(reverse(elem)); }
+    for (const auto &elem : coordinates_to_check) {
+        x_path = x_from + elem.first;
+        y_path = y_from + elem.second;
+        if ((x_path >= 0) && (x_path < board_width)
+            && (y_path >= 0) && (y_path < board_height)
+            && (board.getBoard(x_path, y_path)->getSide() != getSide())) {
+            my_moves.push_back(std::make_pair(x_path, y_path));
+        }
+    }
+    return my_moves;
 
+}

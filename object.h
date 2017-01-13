@@ -103,8 +103,8 @@ public:
 
 class Knight : public Pawn {
 private:
-
-
+    const std::vector<std::pair<int, int >> getMovePossibilites
+            (const Board &, const int &x, const int &y);
 
 public:
     Knight(Player_side side) : Pawn(side, 'N', "Knight") {}
