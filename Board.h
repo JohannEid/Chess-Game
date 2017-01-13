@@ -18,6 +18,8 @@ class Board {
 private:
     matrice board;
     int number_of_turns = 0;
+    bool isNewQueen(const int &, const int &, const int &,
+                    const int &);
 public:
     explicit Board();
 
