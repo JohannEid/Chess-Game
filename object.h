@@ -76,6 +76,10 @@ private:
 protected:
     virtual const std::vector<std::pair<int, int >> getMovePossibilites
             (const Board &, const int &x, const int &y);
+    const std::vector<std::pair<int,int>> checkPath
+            (const Board& board , const std::vector<std::pair<int, int>>& coordinates_to_check,
+             const int& x_from,const int& y_from);
+
 
     void displayMovePossibilities(const std::vector<std::pair<int, int>> &);
 
@@ -113,6 +117,9 @@ public:
 
 class Crazy : public Pawn {
 private:
+    const std::vector<std::pair<int, int >> getMovePossibilites
+            (const Board &, const int &x, const int &y);
+
 
 
 
@@ -123,9 +130,8 @@ public:
 
 class Queen : public Pawn {
 private:
-
-
-
+    const std::vector<std::pair<int, int >> getMovePossibilites
+            (const Board &, const int &x, const int &y);
 public:
     Queen(Player_side side) : Pawn(side, 'Q', "Queen") {}
 

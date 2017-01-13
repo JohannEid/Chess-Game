@@ -4,6 +4,7 @@
 #include "Player.h"
 
 int main() {
+
     Player a(Player_side::LEFT);
     Player b(Player_side::RIGHT);
     Board my_board;
