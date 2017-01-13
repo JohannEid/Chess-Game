@@ -103,8 +103,7 @@ public:
 
 class Knight : public Pawn {
 private:
-    const std::vector<std::pair<int, int >> getMovePossibilites
-            (const Board &, const int &x, const int &y);
+
 
 
 public:
@@ -114,8 +113,7 @@ public:
 
 class Crazy : public Pawn {
 private:
-    const std::vector<std::pair<int, int >> getMovePossibilites
-            (const Board &, const int &x, const int &y);
+
 
 
 public:
@@ -125,8 +123,7 @@ public:
 
 class Queen : public Pawn {
 private:
-    const std::vector<std::pair<int, int >> getMovePossibilites
-            (const Board &, const int &x, const int &y);
+
 
 
 public:
@@ -137,8 +134,7 @@ public:
 class King : public Pawn {
 
 private:
-    const std::vector<std::pair<int, int >> getMovePossibilites
-            (const Board &, const int &x, const int &y);
+
 public:
     King(Player_side side) : Pawn(side, 'K', "King") {}
 

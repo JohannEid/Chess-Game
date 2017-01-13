@@ -43,17 +43,19 @@ const std::vector<std::pair<int, int >> Pawn::getMovePossibilites
         my_moves.push_back(std::make_pair(to_move_x_two, y));
     }
     if ((to_move_x_one > 0) && (to_move_x_one < board_width)) {
-        if ((board.getBoard(to_move_x_one, y)->getSide() == Player_side::NONE))
+        if ((board.getBoard(to_move_x_one, y)->getSide() == Player_side::NONE)) {
             my_moves.push_back(std::make_pair(to_move_x_one, y));
+        }
 
 
         if (((y + 1 < board_height)) && (board.getBoard(to_move_x_one, y + 1)->getSide() != Player_side::NONE &&
-                                         board.getBoard(to_move_x_one, y + 1)->getSide() != getSide()))
-            my_moves.push_back(std::make_pair(to_move_x_one, y + 1));
+                                         board.getBoard(to_move_x_one, y + 1)->getSide() !=
+                                         getSide())) { my_moves.push_back(std::make_pair(to_move_x_one, y + 1)); }
 
         if (((y - 1 >= 0)) && (board.getBoard(to_move_x_one, y - 1)->getSide() != Player_side::NONE
-                               && board.getBoard(to_move_x_one, y - 1)->getSide() != getSide()))
+                               && board.getBoard(to_move_x_one, y - 1)->getSide() != getSide())) {
             my_moves.push_back(std::make_pair(to_move_x_one, y - 1));
+        }
     }
     return my_moves;
 }
@@ -72,17 +74,19 @@ const std::pair<int, int> Pawn::selectPositionToMove
         (const std::vector<std::pair<int, int>> &my_possibilities) {
 
     std::pair<int, int> coordinates;
-    while (true) {
-        std::cout << "Please select the spot to move into!" << std::endl;
-        coordinates = coordinateChoice();
-        try {
-            for (const auto &elem : my_possibilities) {
-                if (elem == coordinates) { return coordinates; }
+    if (!my_possibilities.empty()) {
+        while (true) {
+            std::cout << "Please select the spot to move into!" << std::endl;
+            coordinates = coordinateChoice();
+            try {
+                for (const auto &elem : my_possibilities) {
+                    if (elem == coordinates) { return coordinates; }
+                }
+                throw std::domain_error("Please select a spot you can move into ! ");
             }
-            throw std::domain_error("Please select a spot you can move into ! ");
-        }
-        catch (std::exception const &e) {
-            std::cerr << "Error : " << e.what() << std::endl;
+            catch (std::exception const &e) {
+                std::cerr << "Error : " << e.what() << std::endl;
+            }
         }
     }
 }
@@ -93,24 +97,29 @@ const std::vector<std::pair<int, int >> Tower::getMovePossibilites
     std::vector<std::pair<int, int>> my_moves;
     int x_path{x_from};
     int y_path{y_from};
+
     while ((x_path + 1 < board_width) && (board.getBoard(x_path + 1, y_path)->getSide() != getSide())) {
         ++x_path;
         my_moves.push_back(std::make_pair(x_path, y_path));
+        if (board.getBoard(x_path, y_path)->getSide() != Player_side::NONE) { break; }
     }
     x_path = x_from;
     while ((x_path - 1 >= 0) && (board.getBoard(x_path - 1, y_path)->getSide() != getSide())) {
         --x_path;
         my_moves.push_back(std::make_pair(x_path, y_path));
+        if (board.getBoard(x_path, y_path)->getSide() != Player_side::NONE) { break; }
     }
     x_path = x_from;
     while ((y_path + 1 < board_height) && (board.getBoard(x_path, y_path + 1)->getSide() != getSide())) {
         ++y_path;
         my_moves.push_back(std::make_pair(x_path, y_path));
+        if (board.getBoard(x_path, y_path)->getSide() != Player_side::NONE) { break; }
     }
     y_path = y_from;
-    while ((y_path -1 >= 0) && (board.getBoard(x_path, y_path -1)->getSide() != getSide())) {
+    while ((y_path - 1 >= 0) && (board.getBoard(x_path, y_path - 1)->getSide() != getSide())) {
         --y_path;
         my_moves.push_back(std::make_pair(x_path, y_path));
+        if (board.getBoard(x_path, y_path)->getSide() != Player_side::NONE) { break; }
     }
     return my_moves;
 
