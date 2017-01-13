@@ -72,9 +72,11 @@ bool Board::isNewQueen(const int &from_x, const int &from_y, const int &to_x,
 
 void Board::setBoard(const int &from_x, const int &from_y, const int &to_x,
                      const int &to_y) {
-    std::unique_ptr<Object> empty = std::make_unique<Object>();
 
+    if (isNewQueen(from_x, from_y, to_x, to_y)) {
+        board[from_x][from_y] = std::make_unique<Queen>(getBoard(from_x, from_y)->getSide());
+    }
 
     board[to_x][to_y] = std::move(board[from_x][from_y]);
-    board[from_x][from_y] = std::move(empty);
+    board[from_x][from_y] = std::move(std::make_unique<Object>());
 }
