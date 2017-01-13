@@ -24,7 +24,6 @@ private:
     char widget = 'o';
     std::string name = "empty";
     Player_side side = Player_side::NONE;
-
     const char sideToChar();
 
 
@@ -61,7 +60,7 @@ public:
         return name;
     }
 
-    virtual void move(Board &, const int &x, const int &y);
+    virtual void move(Board &, const int &x, const int &y){}
 
 
 };
@@ -79,7 +78,9 @@ protected:
     const std::vector<std::pair<int,int>> checkPath
             (const Board& board , const std::vector<std::pair<int, int>>& coordinates_to_check,
              const int& x_from,const int& y_from);
-
+    const std::vector<std::pair<int,int>> checkPosition
+            (const Board& board , const std::vector<std::pair<int, int>>& coordinates_to_check,
+             const int& x_from,const int& y_from);
 
     void displayMovePossibilities(const std::vector<std::pair<int, int>> &);
 
@@ -140,6 +141,8 @@ public:
 class King : public Pawn {
 
 private:
+    const std::vector<std::pair<int, int >> getMovePossibilites
+            (const Board &, const int &x, const int &y);
 
 public:
     King(Player_side side) : Pawn(side, 'K', "King") {}

@@ -6,11 +6,6 @@
 #include "Board.h"
 #include "common.h"
 
-
-void Object::move(Board &board, const int &x, const int &y) {
-
-}
-
 const char Object::sideToChar() {
     if (getSide() == Player_side::LEFT) { return 'l'; }
     else if (getSide() == Player_side::RIGHT) { return 'r'; }
@@ -113,19 +108,12 @@ const std::vector<std::pair<int, int>> Pawn::checkPath
     }
     return my_moves;
 }
-
-
-
-
-const std::vector<std::pair<int, int >> Knight::getMovePossibilites
-        (const Board &board, const int &x_from, const int &y_from) {
+const std::vector<std::pair<int, int>> Pawn::checkPosition
+        (const Board &board, const std::vector<std::pair<int, int>> &coordinates_to_check,
+                    const int &x_from, const int &y_from) {
     int x_path{x_from};
     int y_path{y_from};
     std::vector<std::pair<int, int>> my_moves;
-    std::vector<std::pair<int, int>> coordinates_to_check
-            {std::make_pair(3, 2), std::make_pair(3, -2), std::make_pair(-3, 2),
-             std::make_pair(-3, -2)};
-    for (auto &elem : coordinates_to_check) { coordinates_to_check.push_back(reverse(elem)); }
     for (const auto &elem : coordinates_to_check) {
         x_path = x_from + elem.first;
         y_path = y_from + elem.second;
@@ -136,8 +124,19 @@ const std::vector<std::pair<int, int >> Knight::getMovePossibilites
         }
     }
     return my_moves;
+}
+
+
+const std::vector<std::pair<int, int >> Knight::getMovePossibilites
+        (const Board &board, const int &x_from, const int &y_from) {
+    std::vector<std::pair<int, int>> coordinates_to_check
+            {std::make_pair(3, 2), std::make_pair(3, -2), std::make_pair(-3, 2),
+             std::make_pair(-3, -2),std::make_pair(2, 3), std::make_pair(2, -3), std::make_pair(-2, 3),
+             std::make_pair(-2, -3)};
+    return checkPosition(board,coordinates_to_check,x_from,y_from);
 
 }
+
 const std::vector<std::pair<int, int >> Tower::getMovePossibilites
         (const Board &board, const int &x_from, const int &y_from) {
     std::vector<std::pair<int, int>> coordinates_to_check
@@ -164,4 +163,15 @@ const std::vector<std::pair<int, int >> Queen::getMovePossibilites
              std::make_pair(1, 0), std::make_pair(-1, 0),
              std::make_pair(0, 1), std::make_pair(0, -1)};
     return checkPath(board, coordinates_to_check, x_from, y_from);
+}
+
+const std::vector<std::pair<int, int >> King::getMovePossibilites
+        (const Board &board, const int &x_from, const int &y_from) {
+    std::vector<std::pair<int, int>> coordinates_to_check
+            {std::make_pair(1, 1), std::make_pair(1, -1),
+             std::make_pair(-1, 1), std::make_pair(-1, -1),
+             std::make_pair(1, 0), std::make_pair(-1, 0),
+             std::make_pair(0, 1), std::make_pair(0, -1)};
+    return checkPosition(board,coordinates_to_check,x_from,y_from);
+
 }
