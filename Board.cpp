@@ -17,8 +17,10 @@ Board::Board() {
             board[i].push_back(std::make_unique<Object>());
         }
     }
+
     for (unsigned int j{0}; j < board_height; j++) {
         board[raw_pawn_lhs][j] = std::make_unique<Pawn>(Player_side::LEFT);
+
     }
     for (unsigned int j{0}; j < board_height; j++) {
         board[raw_pawn_rhs][j] = std::make_unique<Pawn>(Player_side::RIGHT);
@@ -70,12 +72,20 @@ bool Board::isNewQueen(const int &from_x, const int &from_y, const int &to_x,
 
 }
 
+void Board::winGame(const int &from_x, const int &from_y, const int &to_x,
+                                 const int &to_y) {
+    if (getBoard(to_x, to_y)->getName() == "King")
+        setGame(false);
+    setWinner(getBoard(from_x,from_y)->getSide());
+}
+
 void Board::setBoard(const int &from_x, const int &from_y, const int &to_x,
                      const int &to_y) {
 
     if (isNewQueen(from_x, from_y, to_x, to_y)) {
         board[from_x][from_y] = std::make_unique<Queen>(getBoard(from_x, from_y)->getSide());
     }
+
 
     board[to_x][to_y] = std::move(board[from_x][from_y]);
     board[from_x][from_y] = std::move(std::make_unique<Object>());

@@ -18,8 +18,17 @@ class Board {
 private:
     matrice board;
     int number_of_turns = 0;
+    bool game = true;
+    Player_side winner;
+
+
     bool isNewQueen(const int &, const int &, const int &,
                     const int &);
+    void winGame(const int &, const int &, const int &,
+                 const int &);
+
+
+
 public:
     explicit Board();
 
@@ -35,12 +44,26 @@ public:
         return number_of_turns;
     }
 
-    void setNumber_of_turns(int number_of_turns) {
-        Board::number_of_turns = number_of_turns;
+    void incrNumberOfTurns() {
+        ++ number_of_turns;
     }
 
     void setBoard (const int& from_x,const int& from_y,
                    const int& to_x , const int& to_y);
+    bool isGame() const {
+        return game;
+    }
+
+    void setGame(bool game) {
+        Board::game = game;
+    }
+    Player_side getWinner() const {
+        return winner;
+    }
+
+    void setWinner(Player_side winner) {
+        Board::winner = winner;
+    }
 
 
 };

@@ -5,19 +5,20 @@
 
 int main() {
 
-    Player a(Player_side::LEFT);
-    Player b(Player_side::RIGHT);
+    Player lhs(Player_side::LEFT);
+    Player rhs (Player_side::RIGHT);
+    std::string name_of_winner{" "};
     Board my_board;
-    while (1) {
+    while (my_board.isGame()) {
 
         my_board.display();
-        a.choice_of_action(my_board);
+        lhs.choice_of_action(my_board);
         my_board.display();
-        b.choice_of_action(my_board);
+        rhs.choice_of_action(my_board);
         my_board.display();
-
     }
-
+    (my_board.getWinner()== Player_side::LEFT)?  name_of_winner = lhs.getName() : rhs.getName();
+    std::cout << "Congratulation" << name_of_winner << "wins !! "<<std::endl;
 
     return 0;
 }
