@@ -1,0 +1,68 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/johann/Work/CHESS /Board.cpp
+Board.h
+/home/johann/Work/CHESS /Board.h
+object.h
+/home/johann/Work/CHESS /object.h
+
+/home/johann/Work/CHESS /Board.h
+Header.h
+/home/johann/Work/CHESS /Header.h
+object.h
+/home/johann/Work/CHESS /object.h
+
+/home/johann/Work/CHESS /Header.h
+bits/stdtr1c++.h
+/home/johann/Work/CHESS /bits/stdtr1c++.h
+
+/home/johann/Work/CHESS /Player.cpp
+Player.h
+/home/johann/Work/CHESS /Player.h
+common.h
+/home/johann/Work/CHESS /common.h
+
+/home/johann/Work/CHESS /Player.h
+object.h
+/home/johann/Work/CHESS /object.h
+Board.h
+/home/johann/Work/CHESS /Board.h
+
+/home/johann/Work/CHESS /common.cpp
+common.h
+/home/johann/Work/CHESS /common.h
+Board.h
+/home/johann/Work/CHESS /Board.h
+
+/home/johann/Work/CHESS /common.h
+Header.h
+/home/johann/Work/CHESS /Header.h
+
+/home/johann/Work/CHESS /main.cpp
+Header.h
+/home/johann/Work/CHESS /Header.h
+object.h
+/home/johann/Work/CHESS /object.h
+Board.h
+/home/johann/Work/CHESS /Board.h
+Player.h
+/home/johann/Work/CHESS /Player.h
+
+/home/johann/Work/CHESS /object.cpp
+object.h
+/home/johann/Work/CHESS /object.h
+Board.h
+/home/johann/Work/CHESS /Board.h
+common.h
+/home/johann/Work/CHESS /common.h
+
+/home/johann/Work/CHESS /object.h
+Header.h
+/home/johann/Work/CHESS /Header.h
+

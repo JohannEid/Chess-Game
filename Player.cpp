@@ -10,7 +10,6 @@ void Player::choice_of_action(Board &board) {
     int x{my_coordinates.first};
     int y{my_coordinates.second};
     board.getBoard(x, y)->move(board, x, y);
-
 }
 
 void Player::initName() {
