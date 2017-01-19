@@ -34,6 +34,8 @@ public:
 
     void display();
 
+    void initBoard();
+
 
     const std::unique_ptr<Object> & getBoard
             (const  int& i ,const  int& j) const {

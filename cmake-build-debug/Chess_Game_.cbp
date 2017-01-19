@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;CMake Files\cmake_modules\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/johann/Work/CHESS /cmake-build-debug"/>
+				<Option working_dir="/home/johann/Work/Chess_graphique/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/johann/Work/CHESS\ /cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/johann/Work/CHESS\ /cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/johann/Work/CHESS\ /cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/johann/Work/CHESS\ /cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/johann/Work/Chess_graphique/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/johann/Work/Chess_graphique/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/johann/Work/Chess_graphique/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/johann/Work/Chess_graphique/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/johann/Work/CHESS /cmake-build-debug"/>
+				<Option working_dir="/home/johann/Work/Chess_graphique/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/johann/Work/CHESS\ /cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/johann/Work/CHESS\ /cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/johann/Work/CHESS\ /cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/johann/Work/CHESS\ /cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/johann/Work/Chess_graphique/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/johann/Work/Chess_graphique/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/johann/Work/Chess_graphique/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/johann/Work/Chess_graphique/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/johann/Work/CHESS /cmake-build-debug"/>
+				<Option working_dir="/home/johann/Work/Chess_graphique/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/johann/Work/CHESS\ /cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/johann/Work/CHESS\ /cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/johann/Work/CHESS\ /cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/johann/Work/CHESS\ /cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/johann/Work/Chess_graphique/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/johann/Work/Chess_graphique/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/johann/Work/Chess_graphique/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/johann/Work/Chess_graphique/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Chess_Game_">
-				<Option output="/home/johann/Work/CHESS /cmake-build-debug/Chess_Game_" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/johann/Work/CHESS /cmake-build-debug"/>
+				<Option output="/home/johann/Work/Chess_graphique/cmake-build-debug/Chess_Game_" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/johann/Work/Chess_graphique/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -54,15 +54,15 @@
 					<Add directory="/usr/include/c++/5/backward"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/johann/Work/CHESS\ /cmake-build-debug/Makefile&quot;  VERBOSE=1 Chess_Game_"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/johann/Work/CHESS\ /cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/johann/Work/CHESS\ /cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/johann/Work/CHESS\ /cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/johann/Work/Chess_graphique/cmake-build-debug/Makefile&quot;  VERBOSE=1 Chess_Game_"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/johann/Work/Chess_graphique/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/johann/Work/Chess_graphique/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/johann/Work/Chess_graphique/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Chess_Game_/fast">
-				<Option output="/home/johann/Work/CHESS /cmake-build-debug/Chess_Game_" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/johann/Work/CHESS /cmake-build-debug"/>
+				<Option output="/home/johann/Work/Chess_graphique/cmake-build-debug/Chess_Game_" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/johann/Work/Chess_graphique/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -77,47 +77,47 @@
 					<Add directory="/usr/include/c++/5/backward"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/johann/Work/CHESS\ /cmake-build-debug/Makefile&quot;  VERBOSE=1 Chess_Game_/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/johann/Work/CHESS\ /cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/johann/Work/CHESS\ /cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/johann/Work/CHESS\ /cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/johann/Work/Chess_graphique/cmake-build-debug/Makefile&quot;  VERBOSE=1 Chess_Game_/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/johann/Work/Chess_graphique/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/johann/Work/Chess_graphique/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/johann/Work/Chess_graphique/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/johann/Work/CHESS /Board.cpp">
+		<Unit filename="/home/johann/Work/Chess_graphique/Board.cpp">
 			<Option target="Chess_Game_"/>
 		</Unit>
-		<Unit filename="/home/johann/Work/CHESS /Board.h">
+		<Unit filename="/home/johann/Work/Chess_graphique/Board.h">
 			<Option target="Chess_Game_"/>
 		</Unit>
-		<Unit filename="/home/johann/Work/CHESS /Header.h">
+		<Unit filename="/home/johann/Work/Chess_graphique/Header.h">
 			<Option target="Chess_Game_"/>
 		</Unit>
-		<Unit filename="/home/johann/Work/CHESS /Player.cpp">
+		<Unit filename="/home/johann/Work/Chess_graphique/Player.cpp">
 			<Option target="Chess_Game_"/>
 		</Unit>
-		<Unit filename="/home/johann/Work/CHESS /Player.h">
+		<Unit filename="/home/johann/Work/Chess_graphique/Player.h">
 			<Option target="Chess_Game_"/>
 		</Unit>
-		<Unit filename="/home/johann/Work/CHESS /common.cpp">
+		<Unit filename="/home/johann/Work/Chess_graphique/common.cpp">
 			<Option target="Chess_Game_"/>
 		</Unit>
-		<Unit filename="/home/johann/Work/CHESS /common.h">
+		<Unit filename="/home/johann/Work/Chess_graphique/common.h">
 			<Option target="Chess_Game_"/>
 		</Unit>
-		<Unit filename="/home/johann/Work/CHESS /main.cpp">
+		<Unit filename="/home/johann/Work/Chess_graphique/main.cpp">
 			<Option target="Chess_Game_"/>
 		</Unit>
-		<Unit filename="/home/johann/Work/CHESS /object.cpp">
+		<Unit filename="/home/johann/Work/Chess_graphique/object.cpp">
 			<Option target="Chess_Game_"/>
 		</Unit>
-		<Unit filename="/home/johann/Work/CHESS /object.h">
+		<Unit filename="/home/johann/Work/Chess_graphique/object.h">
 			<Option target="Chess_Game_"/>
 		</Unit>
-		<Unit filename="/home/johann/Work/CHESS /CMakeLists.txt">
+		<Unit filename="/home/johann/Work/Chess_graphique/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/home/johann/Work/CHESS /cmake_modules/FindSFML.cmake">
+		<Unit filename="/home/johann/Work/Chess_graphique/cmake_modules/FindSFML.cmake">
 			<Option virtualFolder="CMake Files\cmake_modules\"/>
 		</Unit>
 	</Project>

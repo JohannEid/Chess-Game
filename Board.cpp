@@ -90,3 +90,20 @@ void Board::setBoard(const int &from_x, const int &from_y, const int &to_x,
     board[to_x][to_y] = std::move(board[from_x][from_y]);
     board[from_x][from_y] = std::move(std::make_unique<Object>());
 }
+void Board::initBoard() {
+    sf::Texture texture_figure;
+    sf::IntRect sprite_size_of_paw = sf::IntRect(294, 6, 28, 50);
+    std::vector<sf::IntRect> sprite_sizes{sf::IntRect(8, 4, 40, 52), sf::IntRect(62, 1, 44, 55),
+                                          sf::IntRect(114, 3, 52, 53), sf::IntRect(170, 1, 52, 55),
+                                          sf::IntRect(227, 2, 50, 53), sf::IntRect(8, 4, 40, 52),
+                                          sf::IntRect(62, 1, 44, 55),
+                                          sf::IntRect(114, 3, 52, 53)};
+    assert (texture_figure.loadFromFile("sprites/board.jpg"));
+
+
+    for (int i{0}; i < board_width; i++){board.setBoard()}
+    for (int i{0}; i < board_width; i++) {}
+    for (int i{0}; i < board_width; i++) {}
+    for (int i{0}; i < board_width; i++) {}
+
+}

@@ -5,12 +5,14 @@
 #ifndef CHESS_GAME_OBJECT_H
 #define CHESS_GAME_OBJECT_H
 
+#include <SFML/Graphics.hpp>
 #include "Header.h"
 
 const int left_pawn_starting = 1;
 const int right_pawn_starting = 6;
 
 class Board;
+
 
 enum class Player_side {
     RIGHT,
@@ -20,10 +22,14 @@ enum class Player_side {
 
 
 class Object {
+
 private:
+
     char widget = 'o';
     std::string name = "empty";
     Player_side side = Player_side::NONE;
+    sf::Sprite sprite_figure;
+
     const char sideToChar();
 
 
@@ -59,8 +65,12 @@ public:
     const std::string &getName() const {
         return name;
     }
+    const sf::Sprite &getSprite_figure() const {
+        return sprite_figure;
+    }
+    void setSprite(const sf::Texture&, const sf::IntRect&);
 
-    virtual void move(Board &, const int &x, const int &y){}
+    virtual void move(Board &, const int &x, const int &y) {}
 
 
 };
@@ -72,15 +82,19 @@ class Pawn : public Object {
 private:
     int sideToDirection();
 
+
 protected:
+
     virtual const std::vector<std::pair<int, int >> getMovePossibilites
             (const Board &, const int &x, const int &y);
-    const std::vector<std::pair<int,int>> checkPath
-            (const Board& board , const std::vector<std::pair<int, int>>& coordinates_to_check,
-             const int& x_from,const int& y_from);
-    const std::vector<std::pair<int,int>> checkPosition
-            (const Board& board , const std::vector<std::pair<int, int>>& coordinates_to_check,
-             const int& x_from,const int& y_from);
+
+    const std::vector<std::pair<int, int>> checkPath
+            (const Board &board, const std::vector<std::pair<int, int>> &coordinates_to_check,
+             const int &x_from, const int &y_from);
+
+    const std::vector<std::pair<int, int>> checkPosition
+            (const Board &board, const std::vector<std::pair<int, int>> &coordinates_to_check,
+             const int &x_from, const int &y_from);
 
     void displayMovePossibilities(const std::vector<std::pair<int, int>> &);
 
@@ -92,18 +106,17 @@ public:
     Pawn(Player_side side, char widget = 'P', std::string name = "Pawn") : Object(widget, side, name) {}
 
     void move(Board &, const int &x, const int &y);
-
 };
 
 class Tower : public Pawn {
 private:
+
     const std::vector<std::pair<int, int >> getMovePossibilites
             (const Board &, const int &x, const int &y);
 
 public:
 
     Tower(Player_side side) : Pawn(side, 'T', "Tower") {}
-
 };
 
 class Knight : public Pawn {
@@ -114,6 +127,7 @@ private:
 public:
     Knight(Player_side side) : Pawn(side, 'N', "Knight") {}
 
+
 };
 
 class Crazy : public Pawn {
@@ -122,19 +136,18 @@ private:
             (const Board &, const int &x, const int &y);
 
 
-
-
 public:
     Crazy(Player_side side) : Pawn(side, 'C', "Crazy") {}
-
 };
 
 class Queen : public Pawn {
 private:
     const std::vector<std::pair<int, int >> getMovePossibilites
             (const Board &, const int &x, const int &y);
+
 public:
     Queen(Player_side side) : Pawn(side, 'Q', "Queen") {}
+
 
 };
 
@@ -146,6 +159,7 @@ private:
 
 public:
     King(Player_side side) : Pawn(side, 'K', "King") {}
+
 
 };
 

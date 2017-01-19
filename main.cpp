@@ -2,14 +2,41 @@
 #include "object.h"
 #include "Board.h"
 #include "Player.h"
-#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
+
+const int window_width = 1024;
+const int window_height = 768;
+
+
+
 
 
 int main() {
+sf::Sprite s_sprites[32];
 
+    sf::RenderWindow window(sf::VideoMode(window_width, window_height), "JChess");
+    sf::Texture t_figures,t_board;
+    assert (t_board.loadFromFile("sprites/board.jpg"));
+
+    sf::Event event;
+    while(window.isOpen())
+    {
+        while(window.pollEvent(event))
+        {
+            switch (event.type)
+            {
+                case sf::Event:: Closed:
+                    window.close();
+                    break;
+            }
+        }
+        window.clear();
+        window.draw(s_figures);
+        window.display();
+
+    }
 
 }
-
 
 
 

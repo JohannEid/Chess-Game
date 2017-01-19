@@ -6,63 +6,67 @@
 
 #IncludeRegexTransform: 
 
-/home/johann/Work/CHESS /Board.cpp
+/home/johann/Work/Chess_graphique/Board.cpp
 Board.h
-/home/johann/Work/CHESS /Board.h
+/home/johann/Work/Chess_graphique/Board.h
 object.h
-/home/johann/Work/CHESS /object.h
+/home/johann/Work/Chess_graphique/object.h
 
-/home/johann/Work/CHESS /Board.h
+/home/johann/Work/Chess_graphique/Board.h
 Header.h
-/home/johann/Work/CHESS /Header.h
+/home/johann/Work/Chess_graphique/Header.h
 object.h
-/home/johann/Work/CHESS /object.h
+/home/johann/Work/Chess_graphique/object.h
 
-/home/johann/Work/CHESS /Header.h
+/home/johann/Work/Chess_graphique/Header.h
 bits/stdtr1c++.h
-/home/johann/Work/CHESS /bits/stdtr1c++.h
+/home/johann/Work/Chess_graphique/bits/stdtr1c++.h
 
-/home/johann/Work/CHESS /Player.cpp
+/home/johann/Work/Chess_graphique/Player.cpp
 Player.h
-/home/johann/Work/CHESS /Player.h
+/home/johann/Work/Chess_graphique/Player.h
 common.h
-/home/johann/Work/CHESS /common.h
+/home/johann/Work/Chess_graphique/common.h
 
-/home/johann/Work/CHESS /Player.h
+/home/johann/Work/Chess_graphique/Player.h
 object.h
-/home/johann/Work/CHESS /object.h
+/home/johann/Work/Chess_graphique/object.h
 Board.h
-/home/johann/Work/CHESS /Board.h
+/home/johann/Work/Chess_graphique/Board.h
 
-/home/johann/Work/CHESS /common.cpp
+/home/johann/Work/Chess_graphique/common.cpp
 common.h
-/home/johann/Work/CHESS /common.h
+/home/johann/Work/Chess_graphique/common.h
 Board.h
-/home/johann/Work/CHESS /Board.h
+/home/johann/Work/Chess_graphique/Board.h
 
-/home/johann/Work/CHESS /common.h
+/home/johann/Work/Chess_graphique/common.h
 Header.h
-/home/johann/Work/CHESS /Header.h
+/home/johann/Work/Chess_graphique/Header.h
 
-/home/johann/Work/CHESS /main.cpp
+/home/johann/Work/Chess_graphique/main.cpp
 Header.h
-/home/johann/Work/CHESS /Header.h
+/home/johann/Work/Chess_graphique/Header.h
 object.h
-/home/johann/Work/CHESS /object.h
+/home/johann/Work/Chess_graphique/object.h
 Board.h
-/home/johann/Work/CHESS /Board.h
+/home/johann/Work/Chess_graphique/Board.h
 Player.h
-/home/johann/Work/CHESS /Player.h
+/home/johann/Work/Chess_graphique/Player.h
+SFML/Window.hpp
+-
+SFML/Graphics.hpp
+-
 
-/home/johann/Work/CHESS /object.cpp
+/home/johann/Work/Chess_graphique/object.cpp
 object.h
-/home/johann/Work/CHESS /object.h
+/home/johann/Work/Chess_graphique/object.h
 Board.h
-/home/johann/Work/CHESS /Board.h
+/home/johann/Work/Chess_graphique/Board.h
 common.h
-/home/johann/Work/CHESS /common.h
+/home/johann/Work/Chess_graphique/common.h
 
-/home/johann/Work/CHESS /object.h
+/home/johann/Work/Chess_graphique/object.h
 Header.h
-/home/johann/Work/CHESS /Header.h
+/home/johann/Work/Chess_graphique/Header.h
 

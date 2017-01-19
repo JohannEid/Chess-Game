@@ -12,6 +12,12 @@ const char Object::sideToChar() {
     else { return ' '; }
 }
 
+void Object::setSprite(const sf::Texture &texture, const sf::IntRect &rectangle) {
+    sprite_figure.setTexture(texture);
+    sprite_figure.setTextureRect(rectangle);
+
+}
+
 void Pawn::move(Board &board, const int &x, const int &y) {
     std::pair<int, int> my_move;
     std::vector<std::pair<int, int>> my_moves{getMovePossibilites(board, x, y)};
@@ -128,6 +134,7 @@ const std::vector<std::pair<int, int>> Pawn::checkPosition
 }
 
 
+
 const std::vector<std::pair<int, int >> Knight::getMovePossibilites
         (const Board &board, const int &x_from, const int &y_from) {
     std::vector<std::pair<int, int>> coordinates_to_check
@@ -145,7 +152,6 @@ const std::vector<std::pair<int, int >> Tower::getMovePossibilites
     return checkPath(board, coordinates_to_check, x_from, y_from);
 
 }
-
 
 const std::vector<std::pair<int, int >> Crazy::getMovePossibilites
         (const Board &board, const int &x_from, const int &y_from) {
