@@ -72,6 +72,8 @@ public:
 
     virtual void move(Board &, const int &x, const int &y) {}
 
+    void setSpritePosition(const int& x, const int& y ){    sprite_figure.setPosition(x,y); }
+
 
 };
 

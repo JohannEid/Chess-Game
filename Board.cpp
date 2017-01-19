@@ -9,6 +9,8 @@
 const int raw_pawn_lhs = 1;
 const int raw_pawn_rhs = 6;
 
+const int square_size = 74;
+
 
 Board::Board() {
 
@@ -21,7 +23,7 @@ Board::Board() {
                                           sf::IntRect(62, top, 44, 55),
                                           sf::IntRect(114, top, 52, 53)};
     assert (texture_figure.loadFromFile("sprites/figures.png"));
-    assert (texture_board.loadFromFile("sprites/board.jpg"));
+    assert (texture_board.loadFromFile("sprites/board.png"));
     sprite_board.setTexture(texture_board);
     for (int j{0}; j < board_width; ++j) {
         board.push_back(std::vector<std::unique_ptr<Object>>());
@@ -29,31 +31,31 @@ Board::Board() {
             switch (j) {
                 case 0:
 
-                    board[j] .push_back(std::move(createPawn(Player_side::LEFT, names[i]))) ;
+                    board[j].push_back(std::move(createPawn(Player_side::LEFT, names[i])));
                     board[j][i]->setSprite(texture_figure, sprite_sizes[i]);
                     break;
 
 
                 case 1:
 
-                    board[j] .push_back(std::move (createPawn(Player_side::LEFT, 'P'))) ;
+                    board[j].push_back(std::move(createPawn(Player_side::LEFT, 'P')));
                     board[j][i]->setSprite(texture_figure, sprite_size_pawn);
                     break;
                 case 6:
 
                     top = 62;
-                    board[j].push_back( std::move (createPawn(Player_side::RIGHT, 'P')));
+                    board[j].push_back(std::move(createPawn(Player_side::RIGHT, 'P')));
                     board[j][i]->setSprite(texture_figure, sprite_size_pawn);
                     break;
                 case 7:
                     top = 62;
-                    board[j].push_back( std::move (createPawn(Player_side::RIGHT, names[i])));
+                    board[j].push_back(std::move(createPawn(Player_side::RIGHT, names[i])));
                     board[j][i]->setSprite(texture_figure, sprite_sizes[i]);
                     break;
 
 
                 default:
-                    board[j].push_back(std::move (std::make_unique<Object>())) ;
+                    board[j].push_back(std::move(std::make_unique<Object>()));
 
             }
         }
@@ -65,12 +67,13 @@ Board::Board() {
 
 void Board::displayGame(sf::RenderWindow &window) {
 
-   window.draw(getSprite_board());
-sprite_board.setPosition(50,50);
+    window.draw(getSprite_board());
     for (int i{0}; i < board_width; ++i) {
         for (int j{0}; j < board_width; ++j) {
-            if (getBoard(i, j)->getName() != "empty") { window.draw(getBoard(i, j)->getSprite_figure());
-        }}
+            if (getBoard(i, j)->getName() != "empty") {
+                window.draw(getBoard(i, j)->getSprite_figure());
+            }
+        }
     }
 }
 
@@ -118,6 +121,17 @@ std::unique_ptr<Object> Board::createPawn(const Player_side &side, const char &n
         case 'Q':
             return std::make_unique<Queen>(side);
     }
+
+}
+
+void Board::relocateEntities() {
+    for (int i{0}; i < board_width; ++i)
+        for (int j{0}; j < board_height; ++j) {
+            if (getBoard(i, j)->getName() != "empty") {
+                getBoard(i, j)->setSpritePosition(square_size  * i, square_size * j);
+            }
+        }
+
 
 }
 

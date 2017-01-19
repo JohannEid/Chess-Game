@@ -69,6 +69,7 @@ public:
     const sf::Sprite &getSprite_board() const {
         return sprite_board;
     }
+    void relocateEntities ();
 
 
 

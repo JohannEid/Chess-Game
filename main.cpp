@@ -4,15 +4,14 @@
 #include "Player.h"
 #include <SFML/Graphics.hpp>
 
-const int window_width = 1024;
-const int window_height = 768;
+const int window_width = 589;
+const int window_height = 589;
 
 
 
 
 
 int main() {
-sf::Sprite s_sprites[32];
 
     sf::RenderWindow window(sf::VideoMode(window_width, window_height), "JChess");
     sf::Event event;
@@ -29,6 +28,7 @@ sf::Sprite s_sprites[32];
             }
         }
         window.clear();
+        my_board.relocateEntities();
         my_board.displayGame(window);
         window.display();
 

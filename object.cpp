@@ -17,6 +17,8 @@ void Object::setSprite(const sf::Texture &texture, const sf::IntRect &rectangle)
     sprite_figure.setTextureRect(rectangle);
 }
 
+
+
 void Pawn::move(Board &board, const int &x, const int &y) {
     std::pair<int, int> my_move;
     std::vector<std::pair<int, int>> my_moves{getMovePossibilites(board, x, y)};
