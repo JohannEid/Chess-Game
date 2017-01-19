@@ -66,7 +66,11 @@ public:
     void setWinner(Player_side winner) {
         Board::winner = winner;
     }
-
+    /*
+    void setObject(const int& i,const int& j,const std::unique_ptr<Object>& to_set){
+   board[i][j] = to_set ;
+    }
+*/
 
 };
 

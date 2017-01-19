@@ -93,8 +93,8 @@ void Board::setBoard(const int &from_x, const int &from_y, const int &to_x,
 
 void Board::initBoard() {
     sf::Texture texture_figure;
-    sf::IntRect sprite_size_of_paw = sf::IntRect(294, 6, 28, 50);
-    std::vector < char > names {};
+    sf::IntRect sprite_size_pawn = sf::IntRect(294, 6, 28, 50);
+    std::vector<char> names{'T', 'Kn', 'C', 'K', 'Q', 'C', 'N', 'T'};
     std::vector<sf::IntRect> sprite_sizes{sf::IntRect(8, 4, 40, 52), sf::IntRect(62, 1, 44, 55),
                                           sf::IntRect(114, 3, 52, 53), sf::IntRect(170, 1, 52, 55),
                                           sf::IntRect(227, 2, 50, 53), sf::IntRect(8, 4, 40, 52),
@@ -103,10 +103,22 @@ void Board::initBoard() {
     assert (texture_figure.loadFromFile("sprites/board.jpg"));
 
 
-    for (int i{0}; i < board_width; i++) { board.setBoard(createPawn()) }
-    for (int i{0}; i < board_width; i++) {}
-    for (int i{0}; i < board_width; i++) {}
-    for (int i{0}; i < board_width; i++) {}
+    for (int i{0}; i < board_width; i++) {
+        board[0][i] = createPawn(Player_side::LEFT, names[i]);
+        board[0][i]->setSprite(texture_figure, sprite_sizes[i]);
+    }
+    for (int i{1}; i < board_width; i++) {
+        board[1][i] = createPawn(Player_side::LEFT, 'P');
+        board[0][i]->setSprite(texture_figure, sprite_size_pawn);
+    }
+    for (int i{0}; i < board_width; i++) {
+        board[0][i] = createPawn(Player_side::LEFT, names[i]);
+        board[0][i]->setSprite(texture_figure, sprite_sizes[i]);
+    }
+    for (int i{0}; i < board_width; i++) {
+        board[0][i] = createPawn(Player_side::LEFT, names[i]);
+        board[0][i]->setSprite(texture_figure, sprite_sizes[i]);
+    }
 
 }
 
@@ -118,7 +130,7 @@ std::unique_ptr<Object> Board::createPawn(const Player_side &side, const char &n
             return std::make_unique<Tower>(side);;
         case 'C':
             return std::make_unique<Crazy>(side);;
-        case 'Kn':
+        case 'N':
             return std::make_unique<Knight>(side);;
         case 'K':
             return std::make_unique<King>(side);;
