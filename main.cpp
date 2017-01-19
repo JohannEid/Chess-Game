@@ -29,6 +29,7 @@ sf::Sprite s_sprites[32];
             }
         }
         window.clear();
+        my_board.displayGame(window);
         window.display();
 
     }

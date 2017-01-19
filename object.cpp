@@ -15,7 +15,6 @@ const char Object::sideToChar() {
 void Object::setSprite(const sf::Texture &texture, const sf::IntRect &rectangle) {
     sprite_figure.setTexture(texture);
     sprite_figure.setTextureRect(rectangle);
-
 }
 
 void Pawn::move(Board &board, const int &x, const int &y) {

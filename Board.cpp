@@ -25,41 +25,37 @@ Board::Board() {
     assert (texture_figure.loadFromFile("sprites/figures.png"));
     assert (texture_board.loadFromFile("sprites/board.jpg"));
     sprite_board.setTexture(texture_board);
-
     for (int j{0}; j < board_width; ++j) {
+        board.push_back(std::vector<std::unique_ptr<Object>>());
         for (int i{0}; i < board_height; ++i) {
-            std::cout << i << std::endl << j << std::endl;
-            std::cin.ignore().get();
             switch (j) {
                 case 0:
 
-                    board[j][i] = createPawn(Player_side::LEFT, names[i]);
+                    board[j] .push_back(std::move(createPawn(Player_side::LEFT, names[i]))) ;
                     board[j][i]->setSprite(texture_figure, sprite_sizes[i]);
-
                     break;
 
 
                 case 1:
 
-                    board[j][i] = createPawn(Player_side::LEFT, 'P');
+                    board[j] .push_back(std::move (createPawn(Player_side::LEFT, 'P'))) ;
                     board[j][i]->setSprite(texture_figure, sprite_size_pawn);
                     break;
                 case 6:
 
                     top = 62;
-                    board[j][i] = createPawn(Player_side::RIGHT, 'P');
+                    board[j].push_back( std::move (createPawn(Player_side::RIGHT, 'P')));
                     board[j][i]->setSprite(texture_figure, sprite_size_pawn);
                     break;
                 case 7:
-
                     top = 62;
-                    board[j][i] = createPawn(Player_side::RIGHT, names[i]);
+                    board[j].push_back( std::move (createPawn(Player_side::RIGHT, names[i])));
                     board[j][i]->setSprite(texture_figure, sprite_sizes[i]);
                     break;
 
 
                 default:
-                    board[i][j] = std::make_unique<Object>();
+                    board[j].push_back(std::move (std::make_unique<Object>())) ;
 
             }
         }
@@ -70,10 +66,11 @@ Board::Board() {
 }
 
 void Board::displayGame(sf::RenderWindow &window) {
-    window.draw(getSprite_board());
+    //window.draw(getSprite_board());
     for (int i{0}; i < board_width; ++i) {
         for (int j{0}; j < board_width; ++j) {
-            if (getBoard(i, j)->getName() != "empty") { window.draw(getBoard(i, j)->getSprite_figure()); }}
+            if (getBoard(i, j)->getName() != "empty") { window.draw(getBoard(i, j)->getSprite_figure());
+            std::cout << "yoyo";}}
     }
 }
 
