@@ -17,17 +17,29 @@ int main() {
     sf::Event event;
     Board my_board;
     Player lhs(Player_side::LEFT);
+    Player rhs(Player_side::LEFT);
+
+    bool player_lhs {true};
 
     while(window.isOpen())
     {
         while(window.pollEvent(event))
         {
-            lhs.choice_of_action(my_board,window);
+
             switch (event.type)
             {
                 case sf::Event:: Closed:
                     window.close();
                     break;
+                case sf::Event::MouseButtonPressed:
+                    if(event.key.code == sf::Mouse::Left){
+                        (player_lhs ) ? lhs.choice_of_action(my_board,window)
+                                             : rhs.choice_of_action(my_board,window);
+                    }(player_lhs)? player_lhs = false : player_lhs = true;
+
+                    break;
+
+
             }
         }
         window.clear();

@@ -23,20 +23,23 @@ void Player::initName() {
 
 const std::pair<int, int> Player::pawnSelection(Board &board, sf::RenderWindow &window) {
     sf::Vector2i mouse_pos = sf::Mouse::getPosition(window);
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-        for (int i{0}; i < board_width; ++i)
 
-            for (int j{0}; j < board_height; ++j) {
-                if ((board.getBoard(i, j)->getSprite_figure().
-                        getGlobalBounds().contains(mouse_pos.x, mouse_pos.y)) &&
-                    (board.getBoard(i, j)->getSide() == getSide())) {
+            for (int i{0}; i < board_width; ++i)
 
-                    std::cout << i << std::endl << j << std::endl;
-                    return std::make_pair(i, j);
+                for (int j{0}; j < board_height; ++j) {
+                    if ((board.getBoard(i, j)->getSprite_figure().
+                            getGlobalBounds().contains(mouse_pos.x, mouse_pos.y)) &&
+                        (board.getBoard(i, j)->getSide() == getSide())) {
+
+                        std::cout << i << std::endl << j << std::endl;
+                        return std::make_pair(i, j);
+                    }
                 }
-            }
 
-    }
-}
+        }
+
+
+
+
 
 
