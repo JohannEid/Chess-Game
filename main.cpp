@@ -16,10 +16,13 @@ int main() {
     sf::RenderWindow window(sf::VideoMode(window_width, window_height), "JChess");
     sf::Event event;
     Board my_board;
+    Player lhs(Player_side::LEFT);
+
     while(window.isOpen())
     {
         while(window.pollEvent(event))
         {
+            lhs.choice_of_action(my_board,window);
             switch (event.type)
             {
                 case sf::Event:: Closed:
@@ -41,14 +44,12 @@ int main() {
 
 /*
 
-   Player lhs(Player_side::LEFT);
    Player rhs (Player_side::RIGHT);
    std::string name_of_winner{" "};
    Board my_board;
    while (my_board.isGame()) {
        my_board.incrNumberOfTurns();
        my_board.display();
-       lhs.choice_of_action(my_board);
        my_board.display();
        rhs.choice_of_action(my_board);
        my_board.display();
