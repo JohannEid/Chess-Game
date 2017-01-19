@@ -9,19 +9,25 @@
 const int raw_pawn_lhs = 1;
 const int raw_pawn_rhs = 6;
 
-const int square_size = 74;
+const int square_size = 75;
 
 
 Board::Board() {
 
     int top{6};
-    sf::IntRect sprite_size_pawn = sf::IntRect(294, top, 28, 50);
+    sf::IntRect sprite_size_pawn = sf::IntRect(294, 6, 28, 50);
+    sf::IntRect sprite_size_pawn_right = sf::IntRect(294, 62, 28, 50);
     std::vector<char> names{'T', 'N', 'C', 'K', 'Q', 'C', 'N', 'T'};
-    std::vector<sf::IntRect> sprite_sizes{sf::IntRect(8, top, 40, 52), sf::IntRect(62, top, 44, 55),
-                                          sf::IntRect(114, top, 52, 53), sf::IntRect(170, top, 52, 55),
-                                          sf::IntRect(227, top, 50, 53), sf::IntRect(8, top, 40, 52),
-                                          sf::IntRect(62, top, 44, 55),
-                                          sf::IntRect(114, top, 52, 53)};
+    std::vector<sf::IntRect> sprite_sizes{sf::IntRect(8, 6, 40, 52), sf::IntRect(62, 6, 44, 55),
+                                          sf::IntRect(114, 6, 52, 53), sf::IntRect(170, 6, 52, 55),
+                                          sf::IntRect(227, 6, 50, 53), sf::IntRect(8, 6, 40, 52),
+                                          sf::IntRect(62, 6, 44, 55),
+                                          sf::IntRect(114, 6, 52, 53)};
+    std::vector<sf::IntRect> sprite_sizes_right;
+    for (auto elem : sprite_sizes) {
+        elem.top = 62;
+        sprite_sizes_right.push_back(elem);
+    }
     assert (texture_figure.loadFromFile("sprites/figures.png"));
     assert (texture_board.loadFromFile("sprites/board.png"));
     sprite_board.setTexture(texture_board);
@@ -41,16 +47,14 @@ Board::Board() {
                     board[j].push_back(std::move(createPawn(Player_side::LEFT, 'P')));
                     board[j][i]->setSprite(texture_figure, sprite_size_pawn);
                     break;
-                case 6:
 
-                    top = 62;
+                case 6:
                     board[j].push_back(std::move(createPawn(Player_side::RIGHT, 'P')));
-                    board[j][i]->setSprite(texture_figure, sprite_size_pawn);
+                    board[j][i]->setSprite(texture_figure, sprite_size_pawn_right);
                     break;
                 case 7:
-                    top = 62;
                     board[j].push_back(std::move(createPawn(Player_side::RIGHT, names[i])));
-                    board[j][i]->setSprite(texture_figure, sprite_sizes[i]);
+                    board[j][i]->setSprite(texture_figure, sprite_sizes_right[i]);
                     break;
 
 
@@ -128,7 +132,7 @@ void Board::relocateEntities() {
     for (int i{0}; i < board_width; ++i)
         for (int j{0}; j < board_height; ++j) {
             if (getBoard(i, j)->getName() != "empty") {
-                getBoard(i, j)->setSpritePosition(square_size  * i, square_size * j);
+                getBoard(i, j)->setSpritePosition(square_size * i, square_size * j);
             }
         }
 
