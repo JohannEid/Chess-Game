@@ -20,7 +20,7 @@ private:
     int number_of_turns = 0;
     bool game = true;
     Player_side winner;
-
+    std::unique_ptr<Object> createPawn (const Player_side&,const char& );
 
     bool isNewQueen(const int &, const int &, const int &,
                     const int &);

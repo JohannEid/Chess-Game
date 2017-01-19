@@ -100,7 +100,6 @@ protected:
 
     const std::pair<int, int> selectPositionToMove(const std::vector<std::pair<int, int>> &);
 
-
 public:
 
     Pawn(Player_side side, char widget = 'P', std::string name = "Pawn") : Object(widget, side, name) {}
