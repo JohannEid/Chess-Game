@@ -13,8 +13,6 @@ const int raw_pawn_rhs = 6;
 Board::Board() {
 
     int top{6};
-    sf::Texture texture_figure;
-    sf::Texture texture_board;
     sf::IntRect sprite_size_pawn = sf::IntRect(294, top, 28, 50);
     std::vector<char> names{'T', 'N', 'C', 'K', 'Q', 'C', 'N', 'T'};
     std::vector<sf::IntRect> sprite_sizes{sf::IntRect(8, top, 40, 52), sf::IntRect(62, top, 44, 55),
@@ -66,11 +64,13 @@ Board::Board() {
 }
 
 void Board::displayGame(sf::RenderWindow &window) {
-    //window.draw(getSprite_board());
+
+   window.draw(getSprite_board());
+sprite_board.setPosition(50,50);
     for (int i{0}; i < board_width; ++i) {
         for (int j{0}; j < board_width; ++j) {
             if (getBoard(i, j)->getName() != "empty") { window.draw(getBoard(i, j)->getSprite_figure());
-            std::cout << "yoyo";}}
+        }}
     }
 }
 

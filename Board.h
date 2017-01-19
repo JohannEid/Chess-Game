@@ -21,6 +21,8 @@ private:
     bool game = true;
     Player_side winner;
     std::unique_ptr<Object> createPawn (const Player_side&,const char& );
+    sf::Texture texture_board;
+    sf::Texture texture_figure;
     sf::Sprite sprite_board;
     bool isNewQueen(const int &, const int &, const int &,
                     const int &);
