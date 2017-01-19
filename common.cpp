@@ -28,3 +28,4 @@ const std::pair<int, int> coordinateChoice() {
         }
     }
 }
+

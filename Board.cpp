@@ -11,56 +11,72 @@ const int raw_pawn_rhs = 6;
 
 
 Board::Board() {
-    for (unsigned int i{0}; i < board_width; i++) {
-        board.push_back(std::vector<std::unique_ptr<Object>>());
-        for (unsigned int j{0}; j < board_height; j++) {
-            board[i].push_back(std::make_unique<Object>());
+
+    int top{6};
+    sf::Texture texture_figure;
+    sf::Texture texture_board;
+    sf::IntRect sprite_size_pawn = sf::IntRect(294, top, 28, 50);
+    std::vector<char> names{'T', 'N', 'C', 'K', 'Q', 'C', 'N', 'T'};
+    std::vector<sf::IntRect> sprite_sizes{sf::IntRect(8, top, 40, 52), sf::IntRect(62, top, 44, 55),
+                                          sf::IntRect(114, top, 52, 53), sf::IntRect(170, top, 52, 55),
+                                          sf::IntRect(227, top, 50, 53), sf::IntRect(8, top, 40, 52),
+                                          sf::IntRect(62, top, 44, 55),
+                                          sf::IntRect(114, top, 52, 53)};
+    assert (texture_figure.loadFromFile("sprites/figures.png"));
+    assert (texture_board.loadFromFile("sprites/board.jpg"));
+    sprite_board.setTexture(texture_board);
+
+    for (int j{0}; j < board_width; ++j) {
+        for (int i{0}; i < board_height; ++i) {
+            std::cout << i << std::endl << j << std::endl;
+            std::cin.ignore().get();
+            switch (j) {
+                case 0:
+
+                    board[j][i] = createPawn(Player_side::LEFT, names[i]);
+                    board[j][i]->setSprite(texture_figure, sprite_sizes[i]);
+
+                    break;
+
+
+                case 1:
+
+                    board[j][i] = createPawn(Player_side::LEFT, 'P');
+                    board[j][i]->setSprite(texture_figure, sprite_size_pawn);
+                    break;
+                case 6:
+
+                    top = 62;
+                    board[j][i] = createPawn(Player_side::RIGHT, 'P');
+                    board[j][i]->setSprite(texture_figure, sprite_size_pawn);
+                    break;
+                case 7:
+
+                    top = 62;
+                    board[j][i] = createPawn(Player_side::RIGHT, names[i]);
+                    board[j][i]->setSprite(texture_figure, sprite_sizes[i]);
+                    break;
+
+
+                default:
+                    board[i][j] = std::make_unique<Object>();
+
+            }
         }
-    }
-
-    for (unsigned int j{0}; j < board_height; j++) {
-        board[raw_pawn_lhs][j] = std::make_unique<Pawn>(Player_side::LEFT);
 
     }
-    for (unsigned int j{0}; j < board_height; j++) {
-        board[raw_pawn_rhs][j] = std::make_unique<Pawn>(Player_side::RIGHT);
-    }
-    board[raw_pawn_lhs - 1][0] = std::make_unique<Tower>(Player_side::LEFT);
-    board[raw_pawn_lhs - 1][board_height - 1] = std::make_unique<Tower>(Player_side::LEFT);
-
-    board[raw_pawn_rhs + 1][0] = std::make_unique<Tower>(Player_side::RIGHT);
-    board[raw_pawn_rhs + 1][board_height - 1] = std::make_unique<Tower>(Player_side::RIGHT);
-
-    board[raw_pawn_lhs - 1][1] = std::make_unique<Knight>(Player_side::LEFT);
-    board[raw_pawn_lhs - 1][board_height - 2] = std::make_unique<Knight>(Player_side::LEFT);
-
-    board[raw_pawn_rhs + 1][1] = std::make_unique<Knight>(Player_side::RIGHT);
-    board[raw_pawn_rhs + 1][board_height - 2] = std::make_unique<Knight>(Player_side::RIGHT);
-
-    board[raw_pawn_lhs - 1][2] = std::make_unique<Crazy>(Player_side::LEFT);
-    board[raw_pawn_lhs - 1][board_height - 3] = std::make_unique<Crazy>(Player_side::LEFT);
-
-    board[raw_pawn_rhs + 1][2] = std::make_unique<Crazy>(Player_side::RIGHT);
-    board[raw_pawn_rhs + 1][board_height - 3] = std::make_unique<Crazy>(Player_side::RIGHT);
-
-    board[raw_pawn_lhs - 1][3] = std::make_unique<King>(Player_side::LEFT);
-    board[raw_pawn_lhs - 1][board_height - 4] = std::make_unique<Queen>(Player_side::LEFT);
-
-    board[raw_pawn_rhs + 1][3] = std::make_unique<King>(Player_side::RIGHT);
-    board[raw_pawn_rhs + 1][board_height - 4] = std::make_unique<Queen>(Player_side::RIGHT);
 
 
 }
 
-void Board::display() {
-    for (unsigned int i{0}; i < board_width; i++) {
-        for (unsigned int j{0}; j < board_height; j++) {
-            getBoard(i, j)->display();
-
-        }
-        std::cout << std::endl;
+void Board::displayGame(sf::RenderWindow &window) {
+    window.draw(getSprite_board());
+    for (int i{0}; i < board_width; ++i) {
+        for (int j{0}; j < board_width; ++j) {
+            if (getBoard(i, j)->getName() != "empty") { window.draw(getBoard(i, j)->getSprite_figure()); }}
     }
 }
+
 
 bool Board::isNewQueen(const int &from_x, const int &from_y, const int &to_x,
                        const int &to_y) {
@@ -85,57 +101,65 @@ void Board::setBoard(const int &from_x, const int &from_y, const int &to_x,
     if (isNewQueen(from_x, from_y, to_x, to_y)) {
         board[from_x][from_y] = std::make_unique<Queen>(getBoard(from_x, from_y)->getSide());
     }
-
-
     board[to_x][to_y] = std::move(board[from_x][from_y]);
     board[from_x][from_y] = std::move(std::make_unique<Object>());
 }
 
-void Board::initBoard() {
-    sf::Texture texture_figure;
-    sf::IntRect sprite_size_pawn = sf::IntRect(294, 6, 28, 50);
-    std::vector<char> names{'T', 'Kn', 'C', 'K', 'Q', 'C', 'N', 'T'};
-    std::vector<sf::IntRect> sprite_sizes{sf::IntRect(8, 4, 40, 52), sf::IntRect(62, 1, 44, 55),
-                                          sf::IntRect(114, 3, 52, 53), sf::IntRect(170, 1, 52, 55),
-                                          sf::IntRect(227, 2, 50, 53), sf::IntRect(8, 4, 40, 52),
-                                          sf::IntRect(62, 1, 44, 55),
-                                          sf::IntRect(114, 3, 52, 53)};
-    assert (texture_figure.loadFromFile("sprites/board.jpg"));
-
-
-    for (int i{0}; i < board_width; i++) {
-        board[0][i] = createPawn(Player_side::LEFT, names[i]);
-        board[0][i]->setSprite(texture_figure, sprite_sizes[i]);
-    }
-    for (int i{1}; i < board_width; i++) {
-        board[1][i] = createPawn(Player_side::LEFT, 'P');
-        board[0][i]->setSprite(texture_figure, sprite_size_pawn);
-    }
-    for (int i{0}; i < board_width; i++) {
-        board[0][i] = createPawn(Player_side::LEFT, names[i]);
-        board[0][i]->setSprite(texture_figure, sprite_sizes[i]);
-    }
-    for (int i{0}; i < board_width; i++) {
-        board[0][i] = createPawn(Player_side::LEFT, names[i]);
-        board[0][i]->setSprite(texture_figure, sprite_sizes[i]);
-    }
-
-}
 
 std::unique_ptr<Object> Board::createPawn(const Player_side &side, const char &name) {
     switch (name) {
         case 'P':
             return std::make_unique<Pawn>(side);
         case 'T':
-            return std::make_unique<Tower>(side);;
+            return std::make_unique<Tower>(side);
         case 'C':
-            return std::make_unique<Crazy>(side);;
+            return std::make_unique<Crazy>(side);
         case 'N':
-            return std::make_unique<Knight>(side);;
+            return std::make_unique<Knight>(side);
         case 'K':
-            return std::make_unique<King>(side);;
+            return std::make_unique<King>(side);
         case 'Q':
             return std::make_unique<Queen>(side);
     }
 
 }
+
+/*
+void Board::initBoard() {
+    int j {0};
+    int top{6};
+    sf::Texture texture_figure;
+    sf::IntRect sprite_size_pawn = sf::IntRect(294, top, 28, 50);
+    std::vector<char> names{'T', 'N', 'C', 'K', 'Q', 'C', 'N', 'T'};
+    std::vector<sf::IntRect> sprite_sizes{sf::IntRect(8, top, 40, 52), sf::IntRect(62, top, 44, 55),
+                                          sf::IntRect(114, top, 52, 53), sf::IntRect(170, top, 52, 55),
+                                          sf::IntRect(227, top, 50, 53), sf::IntRect(8, top, 40, 52),
+                                          sf::IntRect(62, top, 44, 55),
+                                          sf::IntRect(114, top, 52, 53)};
+    assert (texture_figure.loadFromFile("sprites/board.jpg"));
+
+
+    for (int i{0}; i < board_width; i++) {
+        j=0;
+        board[j][i] = createPawn(Player_side::LEFT, names[i]);
+        board[j][i]->setSprite(texture_figure, sprite_sizes[i]);
+    }
+    for (int i{0}; i < board_width; i++) {
+        j=1;
+        board[j][i] = createPawn(Player_side::LEFT, 'P');
+        board[j][i]->setSprite(texture_figure, sprite_size_pawn);
+    }
+    top = 62;
+    for (int i{0}; i < board_width; i++) {
+        j=6;
+        board[j][i] = createPawn(Player_side::RIGHT, 'P');
+        board[j][i]->setSprite(texture_figure, sprite_size_pawn );
+    }
+    for (int i{0}; i < board_width; i++) {
+        j=7;
+        board[j][i] = createPawn(Player_side::RIGHT, names[i]);
+        board[j][i]->setSprite(texture_figure, sprite_sizes[i]);
+    }
+
+}
+ */

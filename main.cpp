@@ -15,10 +15,8 @@ int main() {
 sf::Sprite s_sprites[32];
 
     sf::RenderWindow window(sf::VideoMode(window_width, window_height), "JChess");
-    sf::Texture t_figures,t_board;
-    assert (t_board.loadFromFile("sprites/board.jpg"));
-
     sf::Event event;
+    Board my_board;
     while(window.isOpen())
     {
         while(window.pollEvent(event))
@@ -31,7 +29,6 @@ sf::Sprite s_sprites[32];
             }
         }
         window.clear();
-        window.draw(s_figures);
         window.display();
 
     }

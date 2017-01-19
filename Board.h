@@ -21,7 +21,7 @@ private:
     bool game = true;
     Player_side winner;
     std::unique_ptr<Object> createPawn (const Player_side&,const char& );
-
+    sf::Sprite sprite_board;
     bool isNewQueen(const int &, const int &, const int &,
                     const int &);
     void winGame(const int &, const int &, const int &,
@@ -32,15 +32,12 @@ private:
 public:
     explicit Board();
 
-    void display();
-
-    void initBoard();
-
-
     const std::unique_ptr<Object> & getBoard
             (const  int& i ,const  int& j) const {
         return board[i][j];
     }
+
+    void displayGame (sf::RenderWindow&);
 
     int getNumber_of_turns() const {
         return number_of_turns;
@@ -66,11 +63,12 @@ public:
     void setWinner(Player_side winner) {
         Board::winner = winner;
     }
-    /*
-    void setObject(const int& i,const int& j,const std::unique_ptr<Object>& to_set){
-   board[i][j] = to_set ;
+
+    const sf::Sprite &getSprite_board() const {
+        return sprite_board;
     }
-*/
+
+
 
 };
 
