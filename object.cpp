@@ -78,6 +78,7 @@ const std::pair<int, int> Pawn::selectPositionToMove
     std::pair<int, int> coordinates;
     if (!my_possibilities.empty()) {
         while (true) {
+
             std::cout << "Please select the spot to move into!" << std::endl;
             coordinates = coordinateChoice();
             try {

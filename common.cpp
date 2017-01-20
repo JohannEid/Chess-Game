@@ -31,9 +31,9 @@ const std::pair<int, int> coordinateChoice() {
 }
 
 
-void changeSideToPlay(Player_side & side_to_play) {
-    (side_to_play == Player_side::LEFT) ? side_to_play = Player_side::RIGHT :
-            side_to_play = Player_side::LEFT;
+void changeSideToPlay( int& index ) {
+    (index == 0) ? index += 1 :
+            index -= 1 ;
 }
 
 const std::pair<int, int> pawnSelection(Board & board, sf::RenderWindow & window)
@@ -48,4 +48,10 @@ const std::pair<int, int> pawnSelection(Board & board, sf::RenderWindow & window
 
         }
     return std::make_pair(88,88);
+}
+const std::pair<int, int> moveSelection (Board & board, sf::RenderWindow & window)
+{
+    sf::Vector2i mouse_pos = sf::Mouse::getPosition(window);
+
+    return std::make_pair(mouse_pos.x / board_width,mouse_pos.y / board_width);
 }

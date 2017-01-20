@@ -14,9 +14,9 @@ int main() {
     sf::RenderWindow window(sf::VideoMode(window_width, window_height), "JChess");
     sf::Event event;
     Board my_board;
-    Player lhs(Player_side::LEFT);
-    Player rhs(Player_side::RIGHT);
-    Player_side side_to_play{Player_side::LEFT};
+    std::vector<Player> my_players = {Player_side::LEFT, Player_side::RIGHT};
+    int index_to_play{0};
+    bool is_move{false};
     while (window.isOpen()) {
         while (window.pollEvent(event)) {
 
@@ -25,17 +25,21 @@ int main() {
                     window.close();
                     break;
                 case sf::Event::MouseButtonPressed:
+                    if ((event.key.code == sf::Mouse::Left) && (is_move)) {
+                        std::pair<int, int> target_coordinates_move{moveSelection(my_board, window)};
+
+                        changeSideToPlay(index_to_play);
+
+
+                    }
                     if (event.key.code == sf::Mouse::Left) {
                         std::pair<int, int> target_coordinates{pawnSelection(my_board, window)};
                         if (target_coordinates != std::make_pair(88, 88)) {
-                            if (side_to_play == my_board.getBoard
+                            if ( my_players[index_to_play].getSide() == my_board.getBoard
                                     (target_coordinates.first, target_coordinates.second)->getSide()) {
-                                if (side_to_play == Player_side::LEFT) {
-                                    lhs.choice_of_action(my_board, window, target_coordinates);
-                                } else if (side_to_play == Player_side::RIGHT) {
-                                    rhs.choice_of_action(my_board, window, target_coordinates);
+                                {
+                                    my_players[index_to_play].choice_of_action(my_board, window, target_coordinates);
                                 }
-                                changeSideToPlay(side_to_play);
 
                             }
                         } else {
