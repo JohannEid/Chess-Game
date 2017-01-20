@@ -19,11 +19,11 @@ void Object::setSprite(const sf::Texture &texture, const sf::IntRect &rectangle)
 
 
 
-void Pawn::move(Board &board, const int &x, const int &y) {
+void Pawn::move(Board &board, const int &x, const int &y,const int& x_to,const int& y_to) {
     std::pair<int, int> my_move;
     std::vector<std::pair<int, int>> my_moves{getMovePossibilites(board, x, y)};
     displayMovePossibilities(my_moves);
-    my_move = selectPositionToMove(my_moves);
+    my_move = selectPositionToMove(my_moves,x_to,y_to);
     if (my_move != std::make_pair(0, 0)) { board.setBoard(x, y, my_move.first, my_move.second); }
 }
 
@@ -73,24 +73,15 @@ void Pawn::displayMovePossibilities(const std::vector<std::pair<int, int>> &my_m
 }
 
 const std::pair<int, int> Pawn::selectPositionToMove
-        (const std::vector<std::pair<int, int>> &my_possibilities) {
+        (const std::vector<std::pair<int, int>> &my_possibilities,const int& x_to,const int& y_to) {
 
-    std::pair<int, int> coordinates;
+    std::pair<int, int> coordinates {std::make_pair(x_to,y_to)};
     if (!my_possibilities.empty()) {
-        while (true) {
 
-            std::cout << "Please select the spot to move into!" << std::endl;
-            coordinates = coordinateChoice();
-            try {
                 for (const auto &elem : my_possibilities) {
                     if (elem == coordinates) { return coordinates; }
                 }
-                throw std::domain_error("Please select a spot you can move into ! ");
-            }
-            catch (std::exception const &e) {
-                std::cerr << "Error : " << e.what() << std::endl;
-            }
-        }
+
     }
     return std::make_pair(0, 0);
 }

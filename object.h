@@ -71,7 +71,7 @@ public:
     }
     void setSprite(const sf::Texture&, const sf::IntRect&);
 
-    virtual void move(Board &, const int &x, const int &y) {}
+    virtual void move(Board &, const int &x, const int &y,const int &x_to, const int &y_to) {}
 
     void setSpritePosition(const int& x, const int& y ){    sprite_figure.setPosition(x,y); }
 
@@ -101,15 +101,15 @@ protected:
 
     void displayMovePossibilities(const std::vector<std::pair<int, int>> &);
 
-    const std::pair<int, int> selectPositionToMove(const std::vector<std::pair<int, int>> &);
+    const std::pair<int, int> selectPositionToMove(const std::vector<std::pair<int, int>> &,
+                                                   const int &, const int &);
 
 public:
 
     Pawn(Player_side side, char widget = 'P', std::string name = "Pawn") : Object(widget, side, name) {}
 
-    void move(Board &, const int &x, const int &y);
+    void move(Board &, const int &x, const int &y, const int &x_to, const int &y_to);
 };
-
 class Tower : public Pawn {
 private:
 

@@ -17,6 +17,10 @@ int main() {
     std::vector<Player> my_players = {Player_side::LEFT, Player_side::RIGHT};
     int index_to_play{0};
     bool is_move{false};
+    int x_from{0};
+    int y_from{0};
+    int x_to{0};
+    int y_to{0};
     while (window.isOpen()) {
         while (window.pollEvent(event)) {
 
@@ -26,7 +30,7 @@ int main() {
                     break;
                 case sf::Event::MouseButtonPressed:
                     if ((event.key.code == sf::Mouse::Left) && (is_move)) {
-                        std::pair<int, int> target_coordinates_move{moveSelection(my_board, window)};
+
 
                         changeSideToPlay(index_to_play);
 
@@ -35,10 +39,33 @@ int main() {
                     if (event.key.code == sf::Mouse::Left) {
                         std::pair<int, int> target_coordinates{pawnSelection(my_board, window)};
                         if (target_coordinates != std::make_pair(88, 88)) {
-                            if ( my_players[index_to_play].getSide() == my_board.getBoard
-                                    (target_coordinates.first, target_coordinates.second)->getSide()) {
+                            x_from = target_coordinates.first;
+                            y_from = target_coordinates.second;
+
+                            if (my_players[index_to_play].getSide() == my_board.getBoard
+                                    (x_from, y_from)->getSide())
+                                // we have a pawn which is on side of player whose it is turn
+                            {
                                 {
-                                    my_players[index_to_play].choice_of_action(my_board, window, target_coordinates);
+                                    // now we want to select coordinates where to move
+                                    while ((0 <= x_to < board_width) && (0 <= y_to < board_height)) {
+
+                                        if (event.type == sf::Mouse::Left) {
+
+
+                                            std::pair<int, int> target_coordinates_move{
+                                                    moveSelection(my_board, window)};
+                                            x_to = target_coordinates_move.first;
+                                            y_to = target_coordinates_move.second;
+
+                                            my_board.getBoard(x_from, y_from)->
+                                                    move(my_board, x_from, y_from, x_to, y_to);
+
+                                        }
+
+                                    }
+
+
                                 }
 
                             }
