@@ -6,8 +6,15 @@
 #define CHESS_GAME_COMMON_H
 
 #include "Header.h"
+#include <SFML/Graphics.hpp>
+class Board;
+enum class Player_side;
+
+
 const std:: pair <int,int> coordinateChoice();
-inline const std::pair<int,int> reverse(const std::pair<int,int>&to_reverse)
-{return std::make_pair(to_reverse.second,to_reverse.first);}
+const std::pair<int, int> pawnSelection(Board &, sf::RenderWindow &);
+void   changeSideToPlay(Player_side& );
+
+
 
 #endif //CHESS_GAME_COMMON_H

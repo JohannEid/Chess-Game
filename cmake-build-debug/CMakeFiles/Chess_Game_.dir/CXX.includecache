@@ -39,10 +39,14 @@ common.h
 /home/johann/Work/Chess_graphique/common.h
 Board.h
 /home/johann/Work/Chess_graphique/Board.h
+SFML/Graphics.hpp
+-
 
 /home/johann/Work/Chess_graphique/common.h
 Header.h
 /home/johann/Work/Chess_graphique/Header.h
+SFML/Graphics.hpp
+-
 
 /home/johann/Work/Chess_graphique/main.cpp
 Header.h
@@ -53,6 +57,8 @@ Board.h
 /home/johann/Work/Chess_graphique/Board.h
 Player.h
 /home/johann/Work/Chess_graphique/Player.h
+common.h
+/home/johann/Work/Chess_graphique/common.h
 SFML/Graphics.hpp
 -
 

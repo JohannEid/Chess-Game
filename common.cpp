@@ -4,6 +4,7 @@
 
 #include "common.h"
 #include "Board.h"
+#include <SFML/Graphics.hpp>
 
 const std::pair<int, int> coordinateChoice() {
     std::string ix{" "};
@@ -29,3 +30,22 @@ const std::pair<int, int> coordinateChoice() {
     }
 }
 
+
+void changeSideToPlay(Player_side & side_to_play) {
+    (side_to_play == Player_side::LEFT) ? side_to_play = Player_side::RIGHT :
+            side_to_play = Player_side::LEFT;
+}
+
+const std::pair<int, int> pawnSelection(Board & board, sf::RenderWindow & window)
+{
+    sf::Vector2i mouse_pos = sf::Mouse::getPosition(window);
+
+    for (int i{0}; i < board_width; ++i)
+        for (int j{0}; j < board_height; ++j) {
+            if ((board.getBoard(i, j)->getSprite_figure().
+                    getGlobalBounds().contains(mouse_pos.x, mouse_pos.y))) {
+                return std::make_pair(i, j); }
+
+        }
+    return std::make_pair(88,88);
+}

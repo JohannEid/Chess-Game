@@ -2,13 +2,11 @@
 #include "object.h"
 #include "Board.h"
 #include "Player.h"
+#include "common.h"
 #include <SFML/Graphics.hpp>
 
 const int window_width = 589;
 const int window_height = 589;
-
-
-
 
 
 int main() {
@@ -17,27 +15,35 @@ int main() {
     sf::Event event;
     Board my_board;
     Player lhs(Player_side::LEFT);
-    Player rhs(Player_side::LEFT);
+    Player rhs(Player_side::RIGHT);
+    Player_side side_to_play{Player_side::LEFT};
+    while (window.isOpen()) {
+        while (window.pollEvent(event)) {
 
-    bool player_lhs {true};
-
-    while(window.isOpen())
-    {
-        while(window.pollEvent(event))
-        {
-
-            switch (event.type)
-            {
-                case sf::Event:: Closed:
+            switch (event.type) {
+                case sf::Event::Closed:
                     window.close();
                     break;
                 case sf::Event::MouseButtonPressed:
-                    if(event.key.code == sf::Mouse::Left){
-                        (player_lhs ) ? lhs.choice_of_action(my_board,window)
-                                             : rhs.choice_of_action(my_board,window);
-                    }(player_lhs)? player_lhs = false : player_lhs = true;
+                    if (event.key.code == sf::Mouse::Left) {
+                        std::pair<int, int> target_coordinates{pawnSelection(my_board, window)};
+                        if (target_coordinates != std::make_pair(88, 88)) {
+                            if (side_to_play == my_board.getBoard
+                                    (target_coordinates.first, target_coordinates.second)->getSide()) {
+                                if (side_to_play == Player_side::LEFT) {
+                                    lhs.choice_of_action(my_board, window, target_coordinates);
+                                } else if (side_to_play == Player_side::RIGHT) {
+                                    rhs.choice_of_action(my_board, window, target_coordinates);
+                                }
+                                changeSideToPlay(side_to_play);
 
-                    break;
+                            }
+                        } else {
+                            std::cout << "Please select a valid pawn" << std::endl;
+                        }
+
+
+                    }
 
 
             }
