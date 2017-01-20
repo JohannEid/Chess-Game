@@ -20,9 +20,9 @@ Board::Board() {
     std::vector<char> names{'T', 'N', 'C', 'K', 'Q', 'C', 'N', 'T'};
     std::vector<sf::IntRect> sprite_sizes{sf::IntRect(8, 6, 40, 52), sf::IntRect(62, 6, 44, 55),
                                           sf::IntRect(114, 6, 52, 53), sf::IntRect(170, 6, 52, 55),
-                                          sf::IntRect(227, 6, 50, 53), sf::IntRect(8, 6, 40, 52),
+                                          sf::IntRect(227, 6, 50, 53), sf::IntRect(114, 6, 52, 53),
                                           sf::IntRect(62, 6, 44, 55),
-                                          sf::IntRect(114, 6, 52, 53)};
+                                          sf::IntRect(8, 6, 40, 52)};
     std::vector<sf::IntRect> sprite_sizes_right;
     for (auto elem : sprite_sizes) {
         elem.top = 62;

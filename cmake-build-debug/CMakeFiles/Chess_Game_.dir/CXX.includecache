@@ -47,6 +47,8 @@ Header.h
 /home/johann/Work/Chess_graphique/Header.h
 SFML/Graphics.hpp
 -
+SFML/Audio/Music.hpp
+-
 
 /home/johann/Work/Chess_graphique/main.cpp
 Header.h
@@ -60,6 +62,8 @@ Player.h
 common.h
 /home/johann/Work/Chess_graphique/common.h
 SFML/Graphics.hpp
+-
+SFML/Audio.hpp
 -
 
 /home/johann/Work/Chess_graphique/object.cpp

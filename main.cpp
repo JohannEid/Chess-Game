@@ -3,15 +3,18 @@
 #include "Board.h"
 #include "Player.h"
 #include "common.h"
+
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 const int window_width = 589;
 const int window_height = 589;
 
 
 int main() {
-
+    // create window
     sf::RenderWindow window(sf::VideoMode(window_width, window_height), "JChess");
+
     sf::Event event;
     Board my_board;
     std::vector<Player> my_players = {Player_side::LEFT, Player_side::RIGHT};
@@ -24,6 +27,16 @@ int main() {
     std::vector<std::pair<int, int>> my_moves;
     std::pair<int, int> target_coordinates;
     std::pair<int, int> target_coordinates_move;
+    //starting main music
+    sf::Music background_music;
+    assert(background_music.openFromFile("sounds/satie_je_te_veux.wav"));
+    playMusic(background_music);
+    //loading sound effect
+    sf::SoundBuffer buffer_roll_dice;
+    assert(buffer_roll_dice.loadFromFile("sounds/redneck_roll_dice.wav"));
+    sf::Sound sound_roll_dice;
+    sound_roll_dice.setBuffer(buffer_roll_dice);
+    //start of game loop
     while (window.isOpen()) {
         while (window.pollEvent(event)) {
 
@@ -43,6 +56,7 @@ int main() {
                                     getMovePossibilites(my_board, x_from, y_from);
                             my_board.getBoard(x_from, y_from)->
                                     displayMovePossibilities(my_moves);
+                            sound_roll_dice.play();
 
                             is_move = true;
                         } else {
