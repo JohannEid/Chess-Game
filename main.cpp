@@ -64,7 +64,7 @@ int main() {
                                 move(my_board, x_from, y_from,
                                      x_to, y_to, my_moves)) {
                             changeSideToPlay(index_to_play);
-                            std::cout << "choco" << std::endl;
+                            is_move = false;
                         }
 
                     }

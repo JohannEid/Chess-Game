@@ -21,7 +21,6 @@ void Object::setSprite(const sf::Texture &texture, const sf::IntRect &rectangle)
 
 bool Pawn::move(Board &board, const int &x, const int &y,const int& x_to,const int& y_to,
                 const std::vector< std::pair<int, int>>& my_moves) {
-    std::cout << "YOYO " <<std::endl;
     std::pair<int, int> my_move;
     my_move = selectPositionToMove(my_moves,x_to,y_to);
     if (my_move != std::make_pair(0, 0)) { board.setBoard(x, y, my_move.first, my_move.second);
@@ -133,9 +132,9 @@ const std::vector<std::pair<int, int>> Pawn::checkPosition
 const std::vector<std::pair<int, int >> Knight::getMovePossibilites
         (const Board &board, const int &x_from, const int &y_from) {
     std::vector<std::pair<int, int>> coordinates_to_check
-            {std::make_pair(3, 2), std::make_pair(3, -2), std::make_pair(-3, 2),
-             std::make_pair(-3, -2), std::make_pair(2, 3), std::make_pair(2, -3), std::make_pair(-2, 3),
-             std::make_pair(-2, -3)};
+            {std::make_pair(2, 1), std::make_pair(2, -1), std::make_pair(-2, 1),
+             std::make_pair(-2, -1), std::make_pair(1, 2), std::make_pair(1, -2), std::make_pair(-1, 2),
+             std::make_pair(-1, -2)};
     return checkPosition(board, coordinates_to_check, x_from, y_from);
 }
 
