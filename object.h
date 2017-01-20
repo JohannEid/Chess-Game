@@ -71,9 +71,15 @@ public:
     }
     void setSprite(const sf::Texture&, const sf::IntRect&);
 
-    virtual void move(Board &, const int &x, const int &y,const int &x_to, const int &y_to) {}
+    virtual bool move(Board &board, const int &x, const int &y,const int& x_to,const int& y_to,
+                      const std::vector< std::pair<int, int>>& my_moves) {}
 
     void setSpritePosition(const int& x, const int& y ){    sprite_figure.setPosition(x,y); }
+
+    virtual const std::vector<std::pair<int, int >> getMovePossibilites
+            (const Board &, const int &x, const int &y){};
+    virtual void displayMovePossibilities(const std::vector<std::pair<int, int>> &){}
+
 
 
 };
@@ -88,8 +94,7 @@ private:
 
 protected:
 
-    virtual const std::vector<std::pair<int, int >> getMovePossibilites
-            (const Board &, const int &x, const int &y);
+
 
     const std::vector<std::pair<int, int>> checkPath
             (const Board &board, const std::vector<std::pair<int, int>> &coordinates_to_check,
@@ -99,16 +104,19 @@ protected:
             (const Board &board, const std::vector<std::pair<int, int>> &coordinates_to_check,
              const int &x_from, const int &y_from);
 
-    void displayMovePossibilities(const std::vector<std::pair<int, int>> &);
 
     const std::pair<int, int> selectPositionToMove(const std::vector<std::pair<int, int>> &,
                                                    const int &, const int &);
 
 public:
+     const std::vector<std::pair<int, int >> getMovePossibilites
+            (const Board &, const int &x, const int &y);
+    void displayMovePossibilities(const std::vector<std::pair<int, int>> &);
 
     Pawn(Player_side side, char widget = 'P', std::string name = "Pawn") : Object(widget, side, name) {}
 
-    void move(Board &, const int &x, const int &y, const int &x_to, const int &y_to);
+    bool move(Board &, const int &x, const int &y,
+              const int &x_to, const int &y_to,const std::vector< std::pair<int, int>>&);
 };
 class Tower : public Pawn {
 private:

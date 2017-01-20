@@ -19,12 +19,14 @@ void Object::setSprite(const sf::Texture &texture, const sf::IntRect &rectangle)
 
 
 
-void Pawn::move(Board &board, const int &x, const int &y,const int& x_to,const int& y_to) {
+bool Pawn::move(Board &board, const int &x, const int &y,const int& x_to,const int& y_to,
+                const std::vector< std::pair<int, int>>& my_moves) {
+    std::cout << "YOYO " <<std::endl;
     std::pair<int, int> my_move;
-    std::vector<std::pair<int, int>> my_moves{getMovePossibilites(board, x, y)};
-    displayMovePossibilities(my_moves);
     my_move = selectPositionToMove(my_moves,x_to,y_to);
-    if (my_move != std::make_pair(0, 0)) { board.setBoard(x, y, my_move.first, my_move.second); }
+    if (my_move != std::make_pair(0, 0)) { board.setBoard(x, y, my_move.first, my_move.second);
+    return true;}
+    else{return false;}
 }
 
 int Pawn::sideToDirection() {

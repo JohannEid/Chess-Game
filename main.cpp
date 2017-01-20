@@ -21,6 +21,9 @@ int main() {
     int y_from{0};
     int x_to{0};
     int y_to{0};
+    std::vector<std::pair<int, int>> my_moves;
+    std::pair<int, int> target_coordinates;
+    std::pair<int, int> target_coordinates_move;
     while (window.isOpen()) {
         while (window.pollEvent(event)) {
 
@@ -29,62 +32,56 @@ int main() {
                     window.close();
                     break;
                 case sf::Event::MouseButtonPressed:
-                    if ((event.key.code == sf::Mouse::Left) && (is_move)) {
 
-
-                        changeSideToPlay(index_to_play);
-
-
-                    }
-                    if (event.key.code == sf::Mouse::Left) {
-                        std::pair<int, int> target_coordinates{pawnSelection(my_board, window)};
+                    if ((event.key.code == sf::Mouse::Left) && (!is_move)) {
+                        // we have a pawn which is on side of player whose it is turn
+                        target_coordinates = pawnSelection(my_board, window, my_players[index_to_play].getSide());
                         if (target_coordinates != std::make_pair(88, 88)) {
                             x_from = target_coordinates.first;
                             y_from = target_coordinates.second;
+                            my_moves = my_board.getBoard(x_from, y_from)->
+                                    getMovePossibilites(my_board, x_from, y_from);
+                            my_board.getBoard(x_from, y_from)->
+                                    displayMovePossibilities(my_moves);
 
-                            if (my_players[index_to_play].getSide() == my_board.getBoard
-                                    (x_from, y_from)->getSide())
-                                // we have a pawn which is on side of player whose it is turn
-                            {
-                                {
-                                    // now we want to select coordinates where to move
-                                    while ((0 <= x_to < board_width) && (0 <= y_to < board_height)) {
-
-                                        if (event.type == sf::Mouse::Left) {
-
-
-                                            std::pair<int, int> target_coordinates_move{
-                                                    moveSelection(my_board, window)};
-                                            x_to = target_coordinates_move.first;
-                                            y_to = target_coordinates_move.second;
-
-                                            my_board.getBoard(x_from, y_from)->
-                                                    move(my_board, x_from, y_from, x_to, y_to);
-
-                                        }
-
-                                    }
-
-
-                                }
-
-                            }
+                            is_move = true;
                         } else {
+                            // bad pawn selection
                             std::cout << "Please select a valid pawn" << std::endl;
                         }
+                    } else if ((event.key.code == sf::Mouse::Left) && (is_move)) {
+                        // now that we selected valid pawn we can choose spot to move into
 
+
+                        target_coordinates_move = moveSelection(my_board, window);
+                        x_to = target_coordinates_move.first;
+                        y_to = target_coordinates_move.second;
+                        std::cout << x_to << std::endl;
+                        std::cout << y_to << std::endl;
+
+
+                        if (my_board.getBoard(x_from, y_from)->
+                                move(my_board, x_from, y_from,
+                                     x_to, y_to, my_moves)) {
+                            changeSideToPlay(index_to_play);
+                            std::cout << "choco" << std::endl;
+                        }
 
                     }
 
 
             }
+
+
         }
+
         window.clear();
         my_board.relocateEntities();
         my_board.displayGame(window);
         window.display();
 
     }
+
 
 }
 
