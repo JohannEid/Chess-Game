@@ -18,14 +18,14 @@ void Object::setSprite(const sf::Texture &texture, const sf::IntRect &rectangle)
 }
 
 
-
-bool Pawn::move(Board &board, const int &x, const int &y,const int& x_to,const int& y_to,
-                const std::vector< std::pair<int, int>>& my_moves) {
+bool Pawn::move(Board &board, const int &x, const int &y, const int &x_to, const int &y_to,
+                const std::vector<std::pair<int, int>> &my_moves) {
     std::pair<int, int> my_move;
-    my_move = selectPositionToMove(my_moves,x_to,y_to);
-    if (my_move != std::make_pair(0, 0)) { board.setBoard(x, y, my_move.first, my_move.second);
-    return true;}
-    else{return false;}
+    my_move = selectPositionToMove(my_moves, x_to, y_to);
+    if (my_move != std::make_pair(88, 88)) {
+        board.setBoard(x, y, my_move.first, my_move.second);
+        return true;
+    } else { return false; }
 }
 
 int Pawn::sideToDirection() {
@@ -45,7 +45,7 @@ const std::vector<std::pair<int, int >> Pawn::getMovePossibilites
         (board.getBoard(to_move_x_two, y)->getSide() == Player_side::NONE)) {
         my_moves.push_back(std::make_pair(to_move_x_two, y));
     }
-    if ((to_move_x_one > 0) && (to_move_x_one < board_width)) {
+    if ((to_move_x_one >= 0) && (to_move_x_one < board_width)) {
         if ((board.getBoard(to_move_x_one, y)->getSide() == Player_side::NONE)) {
             my_moves.push_back(std::make_pair(to_move_x_one, y));
         }
@@ -74,17 +74,17 @@ void Pawn::displayMovePossibilities(const std::vector<std::pair<int, int>> &my_m
 }
 
 const std::pair<int, int> Pawn::selectPositionToMove
-        (const std::vector<std::pair<int, int>> &my_possibilities,const int& x_to,const int& y_to) {
+        (const std::vector<std::pair<int, int>> &my_possibilities, const int &x_to, const int &y_to) {
 
-    std::pair<int, int> coordinates {std::make_pair(x_to,y_to)};
+    std::pair<int, int> coordinates{std::make_pair(x_to, y_to)};
     if (!my_possibilities.empty()) {
 
-                for (const auto &elem : my_possibilities) {
-                    if (elem == coordinates) { return coordinates; }
-                }
+        for (const auto &elem : my_possibilities) {
+            if (elem == coordinates) { return coordinates; }
+        }
 
     }
-    return std::make_pair(0, 0);
+    return std::make_pair(88, 88);
 }
 
 const std::vector<std::pair<int, int>> Pawn::checkPath
@@ -126,7 +126,6 @@ const std::vector<std::pair<int, int>> Pawn::checkPosition
     }
     return my_moves;
 }
-
 
 
 const std::vector<std::pair<int, int >> Knight::getMovePossibilites

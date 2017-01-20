@@ -104,6 +104,13 @@ void Board::setBoard(const int &from_x, const int &from_y, const int &to_x,
 
     if (isNewQueen(from_x, from_y, to_x, to_y)) {
         board[from_x][from_y] = std::make_unique<Queen>(getBoard(from_x, from_y)->getSide());
+        if (board[from_x][from_y]->getSide() == Player_side::LEFT) {
+            board[from_x][from_y]->setSprite(texture_figure, sf::IntRect(227, 6, 50, 53));
+        }
+        else if ((board[from_x][from_y]->getSide() == Player_side::RIGHT)) {
+            board[from_x][from_y]->setSprite(texture_figure, sf::IntRect(227, 62, 50, 53));
+        }
+
     }
     board[to_x][to_y] = std::move(board[from_x][from_y]);
     board[from_x][from_y] = std::move(std::make_unique<Object>());

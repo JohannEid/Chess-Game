@@ -82,6 +82,11 @@ int main() {
                         }
 
                     }
+                        //deselect pawn
+                    else if ((event.key.code == sf::Mouse::Right) && (is_move))
+                    {
+                        is_move = false;
+                    }
 
 
             }
