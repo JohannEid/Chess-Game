@@ -44,12 +44,11 @@ void GameEngine::run() {
                 }
             }
 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || (!my_board.isGame())) {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) || (!my_board.isGame())) {
                 window.close();
+
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-                window.close();
-            }
+
         }
         window.clear();
         my_board.relocateEntities();
@@ -89,7 +88,7 @@ void GameEngine::pawnMoveEvent() {
 
 
 GameEngine::GameEngine() {
-    window.create(sf::VideoMode(window_width, window_height), "JChess");
+     window.create(sf::VideoMode(window_width, window_height), "JChess");
      my_audio.createAudio("sounds/satie_je_te_veux.wav", "sounds/redneck_roll_dice.wav");
 }
 
