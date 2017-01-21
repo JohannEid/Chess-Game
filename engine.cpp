@@ -5,7 +5,7 @@
 #include "engine.h"
 #include "common.h"
 
-Audio::Audio(const std::string &background_music_file, const std::string &buffer_roll_dice_file) {
+ void Audio ::createAudio(const std::string &background_music_file, const std::string &buffer_roll_dice_file){
 
     assert(background_music.openFromFile(background_music_file));
     assert(buffer_roll_dice.loadFromFile(buffer_roll_dice_file));
@@ -24,6 +24,7 @@ void Audio::playSoundEffet() {
 
 
 void GameEngine::run() {
+    my_audio.playMusic();
     while (window.isOpen()) {
         while (window.pollEvent(event)) {
 
@@ -33,9 +34,9 @@ void GameEngine::run() {
             if (event.type == sf::Event::MouseButtonPressed) {
 
 
-                if ((event.key.code == sf::Mouse::Left) && (!isMove())) {
+                if ((event.key.code == sf::Mouse::Left) && (!is_move)) {
                     pawnSelectionEvent();
-                } else if ((event.key.code == sf::Mouse::Left) && (isMove())) {
+                } else if ((event.key.code == sf::Mouse::Left) && (is_move)) {
                     pawnMoveEvent();
 
                 } else if ((event.key.code == sf::Mouse::Right) && (is_move)) {
@@ -68,7 +69,7 @@ void GameEngine::pawnSelectionEvent() {
         my_board.getBoard(x_from, y_from)->
                 displayMovePossibilities(my_moves);
         is_move = true;
-        // my_audio.playSoundEffet();
+         my_audio.playSoundEffet();
 
     }
 }
@@ -89,7 +90,7 @@ void GameEngine::pawnMoveEvent() {
 
 GameEngine::GameEngine() {
     window.create(sf::VideoMode(window_width, window_height), "JChess");
-    // my_audio = Audio("sounds/satie_je_te_veux.wav", "sounds/redneck_roll_dice.wav");
+     my_audio.createAudio("sounds/satie_je_te_veux.wav", "sounds/redneck_roll_dice.wav");
 }
 
 

@@ -23,29 +23,13 @@ private:
 
 
 public:
-    Audio(const std::string &, const std::string &);
+    void createAudio(const std::string &, const std::string &);
 
     void playMusic();
 
     void playSoundEffet();
 };
 
-class GameEvent
-{
-private:
-    int index_to_play {0};
-    int x_from{0};
-    int y_from{0};
-    int x_to{0};
-    int y_to{0};
-    std::vector<std::pair<int, int>> my_moves;
-    std::pair<int, int> target_coordinates;
-    std::pair<int, int> target_coordinates_move;
-
-public:
-
-
-};
 
 class GameEngine {
 private:
@@ -62,7 +46,7 @@ private:
     Board my_board;
     std::vector<Player> my_players = {Player_side::LEFT, Player_side::RIGHT};
     sf::RenderWindow window ;
-   // Audio my_audio;
+    Audio my_audio;
 
 public:
     GameEngine();
@@ -74,10 +58,6 @@ public:
     void pawnMoveEvent();
 
 
-
-    bool isMove() const {
-        return is_move;
-    }
 
 
 };
