@@ -14,19 +14,7 @@ const int window_height = 589;
 int main() {
     // create window
     sf::RenderWindow window(sf::VideoMode(window_width, window_height), "JChess");
-
     sf::Event event;
-    Board my_board;
-    std::vector<Player> my_players = {Player_side::LEFT, Player_side::RIGHT};
-    int index_to_play{0};
-    bool is_move{false};
-    int x_from{0};
-    int y_from{0};
-    int x_to{0};
-    int y_to{0};
-    std::vector<std::pair<int, int>> my_moves;
-    std::pair<int, int> target_coordinates;
-    std::pair<int, int> target_coordinates_move;
     //starting main music
     sf::Music background_music;
     assert(background_music.openFromFile("sounds/satie_je_te_veux.wav"));
@@ -36,8 +24,27 @@ int main() {
     assert(buffer_roll_dice.loadFromFile("sounds/redneck_roll_dice.wav"));
     sf::Sound sound_roll_dice;
     sound_roll_dice.setBuffer(buffer_roll_dice);
+    bool isNewGame{false};
+    int index_to_play{0};
+    bool is_move{false};
+    int x_from{0};
+    int y_from{0};
+    int x_to{0};
+    int y_to{0};
+    std::vector<std::pair<int, int>> my_moves;
+    std::pair<int, int> target_coordinates;
+    std::pair<int, int> target_coordinates_move;
+    Board my_board;
+    std::vector<Player> my_players = {Player_side::LEFT, Player_side::RIGHT};
     //start of game loop
     while (window.isOpen()) {
+        if (isNewGame) {
+            my_board = Board();
+            my_players[0] = Player(Player_side::LEFT);
+            my_players[1] = Player(Player_side::RIGHT);
+            isNewGame = false;
+        }
+
         while (window.pollEvent(event)) {
 
             switch (event.type) {
@@ -70,9 +77,6 @@ int main() {
                         target_coordinates_move = moveSelection(my_board, window);
                         x_to = target_coordinates_move.first;
                         y_to = target_coordinates_move.second;
-                        std::cout << x_to << std::endl;
-                        std::cout << y_to << std::endl;
-
 
                         if (my_board.getBoard(x_from, y_from)->
                                 move(my_board, x_from, y_from,
@@ -83,15 +87,18 @@ int main() {
 
                     }
                         //deselect pawn
-                    else if ((event.key.code == sf::Mouse::Right) && (is_move))
-                    {
+                    else if ((event.key.code == sf::Mouse::Right) && (is_move)) {
                         is_move = false;
                     }
 
-
             }
 
-
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || (!my_board.isGame())) {
+                isNewGame = true;
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+                window.close();
+            }
         }
 
         window.clear();

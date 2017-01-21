@@ -61,11 +61,11 @@ Board::Board() {
                 default:
                     board[j].push_back(std::move(std::make_unique<Object>()));
 
+
             }
         }
 
     }
-
 
 }
 
@@ -94,7 +94,8 @@ bool Board::isNewQueen(const int &from_x, const int &from_y, const int &to_x,
 
 void Board::winGame(const int &from_x, const int &from_y, const int &to_x,
                     const int &to_y) {
-    if (getBoard(to_x, to_y)->getName() == "King")
+    if ((getBoard(to_x, to_y)->getName() == "King") && (getBoard(from_x,from_y)->getSide() !=getBoard(to_x, to_y)
+            ->getSide()) && (getBoard(from_x,from_y)->getSide() != Player_side::NONE))
         setGame(false);
     setWinner(getBoard(from_x, from_y)->getSide());
 }
@@ -112,6 +113,7 @@ void Board::setBoard(const int &from_x, const int &from_y, const int &to_x,
         }
 
     }
+    winGame(from_x,from_y,to_x,to_y);
     board[to_x][to_y] = std::move(board[from_x][from_y]);
     board[from_x][from_y] = std::move(std::make_unique<Object>());
 }
