@@ -3,6 +3,7 @@
 #include "Board.h"
 #include "Player.h"
 #include "common.h"
+#include "engine.h"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
@@ -16,14 +17,8 @@ int main() {
     sf::RenderWindow window(sf::VideoMode(window_width, window_height), "JChess");
     sf::Event event;
     //starting main music
-    sf::Music background_music;
-    assert(background_music.openFromFile("sounds/satie_je_te_veux.wav"));
-    playMusic(background_music);
-    //loading sound effect
-    sf::SoundBuffer buffer_roll_dice;
-    assert(buffer_roll_dice.loadFromFile("sounds/redneck_roll_dice.wav"));
-    sf::Sound sound_roll_dice;
-    sound_roll_dice.setBuffer(buffer_roll_dice);
+    Audio my_audio("sounds/satie_je_te_veux.wav", "sounds/redneck_roll_dice.wav");
+    my_audio.playMusic();
     bool isNewGame{false};
     int index_to_play{0};
     bool is_move{false};
@@ -63,9 +58,8 @@ int main() {
                                     getMovePossibilites(my_board, x_from, y_from);
                             my_board.getBoard(x_from, y_from)->
                                     displayMovePossibilities(my_moves);
-                            sound_roll_dice.play();
-
                             is_move = true;
+                            my_audio.playSoundEffet();
                         } else {
                             // bad pawn selection
                             std::cout << "Please select a valid pawn" << std::endl;
@@ -90,7 +84,6 @@ int main() {
                     else if ((event.key.code == sf::Mouse::Right) && (is_move)) {
                         is_move = false;
                     }
-
             }
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || (!my_board.isGame())) {
@@ -100,34 +93,11 @@ int main() {
                 window.close();
             }
         }
-
         window.clear();
         my_board.relocateEntities();
         my_board.displayGame(window);
         window.display();
-
     }
-
 
 }
 
-
-
-
-/*
-
-   Player rhs (Player_side::RIGHT);
-   std::string name_of_winner{" "};
-   Board my_board;
-   while (my_board.isGame()) {
-       my_board.incrNumberOfTurns();
-       my_board.display();
-       my_board.display();
-       rhs.choice_of_action(my_board);
-       my_board.display();
-   }
-   (my_board.getWinner()== Player_side::LEFT)?  name_of_winner = lhs.getName() : rhs.getName();
-   std::cout << "Congratulation" << name_of_winner << "wins !! "<<std::endl;
-
-   return 0;
-    */

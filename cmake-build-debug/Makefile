@@ -204,6 +204,33 @@ common.cpp.s:
 	$(MAKE) -f CMakeFiles/Chess_Game_.dir/build.make CMakeFiles/Chess_Game_.dir/common.cpp.s
 .PHONY : common.cpp.s
 
+engine.o: engine.cpp.o
+
+.PHONY : engine.o
+
+# target to build an object file
+engine.cpp.o:
+	$(MAKE) -f CMakeFiles/Chess_Game_.dir/build.make CMakeFiles/Chess_Game_.dir/engine.cpp.o
+.PHONY : engine.cpp.o
+
+engine.i: engine.cpp.i
+
+.PHONY : engine.i
+
+# target to preprocess a source file
+engine.cpp.i:
+	$(MAKE) -f CMakeFiles/Chess_Game_.dir/build.make CMakeFiles/Chess_Game_.dir/engine.cpp.i
+.PHONY : engine.cpp.i
+
+engine.s: engine.cpp.s
+
+.PHONY : engine.s
+
+# target to generate assembly for a file
+engine.cpp.s:
+	$(MAKE) -f CMakeFiles/Chess_Game_.dir/build.make CMakeFiles/Chess_Game_.dir/engine.cpp.s
+.PHONY : engine.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -276,6 +303,9 @@ help:
 	@echo "... common.o"
 	@echo "... common.i"
 	@echo "... common.s"
+	@echo "... engine.o"
+	@echo "... engine.i"
+	@echo "... engine.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

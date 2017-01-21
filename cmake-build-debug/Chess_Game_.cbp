@@ -105,6 +105,12 @@
 		<Unit filename="/home/johann/Work/Chess_graphique/common.h">
 			<Option target="Chess_Game_"/>
 		</Unit>
+		<Unit filename="/home/johann/Work/Chess_graphique/engine.cpp">
+			<Option target="Chess_Game_"/>
+		</Unit>
+		<Unit filename="/home/johann/Work/Chess_graphique/engine.h">
+			<Option target="Chess_Game_"/>
+		</Unit>
 		<Unit filename="/home/johann/Work/Chess_graphique/main.cpp">
 			<Option target="Chess_Game_"/>
 		</Unit>

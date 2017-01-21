@@ -50,6 +50,18 @@ SFML/Graphics.hpp
 SFML/Audio/Music.hpp
 -
 
+/home/johann/Work/Chess_graphique/engine.cpp
+engine.h
+/home/johann/Work/Chess_graphique/engine.h
+
+/home/johann/Work/Chess_graphique/engine.h
+Header.h
+/home/johann/Work/Chess_graphique/Header.h
+SFML/Graphics.hpp
+-
+SFML/Audio.hpp
+-
+
 /home/johann/Work/Chess_graphique/main.cpp
 Header.h
 /home/johann/Work/Chess_graphique/Header.h
@@ -61,6 +73,8 @@ Player.h
 /home/johann/Work/Chess_graphique/Player.h
 common.h
 /home/johann/Work/Chess_graphique/common.h
+engine.h
+/home/johann/Work/Chess_graphique/engine.h
 SFML/Graphics.hpp
 -
 SFML/Audio.hpp

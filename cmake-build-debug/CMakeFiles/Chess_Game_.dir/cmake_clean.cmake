@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Chess_Game_.dir/Board.cpp.o"
   "CMakeFiles/Chess_Game_.dir/Player.cpp.o"
   "CMakeFiles/Chess_Game_.dir/common.cpp.o"
+  "CMakeFiles/Chess_Game_.dir/engine.cpp.o"
   "Chess_Game_.pdb"
   "Chess_Game_"
 )

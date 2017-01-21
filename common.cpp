@@ -8,10 +8,7 @@
 
 const int size_of_square = 76;
 
-void playMusic( sf::Music& background_music){
-    background_music.play();
-    background_music.setLoop(true);
-}
+
 
 
 
