@@ -8,11 +8,20 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
-const int window_width = 589;
-const int window_height = 589;
+
 
 
 int main() {
+    GameEngine game;
+    game.run();
+
+}
+
+
+
+
+
+/*
     // create window
     sf::RenderWindow window(sf::VideoMode(window_width, window_height), "JChess");
     sf::Event event;
@@ -98,6 +107,5 @@ int main() {
         my_board.displayGame(window);
         window.display();
     }
-
-}
+*/
 

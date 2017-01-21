@@ -19,9 +19,13 @@ CMakeFiles/Chess_Game_.dir/common.cpp.o: ../common.cpp
 CMakeFiles/Chess_Game_.dir/common.cpp.o: ../common.h
 CMakeFiles/Chess_Game_.dir/common.cpp.o: ../object.h
 
+CMakeFiles/Chess_Game_.dir/engine.cpp.o: ../Board.h
 CMakeFiles/Chess_Game_.dir/engine.cpp.o: ../Header.h
+CMakeFiles/Chess_Game_.dir/engine.cpp.o: ../Player.h
+CMakeFiles/Chess_Game_.dir/engine.cpp.o: ../common.h
 CMakeFiles/Chess_Game_.dir/engine.cpp.o: ../engine.cpp
 CMakeFiles/Chess_Game_.dir/engine.cpp.o: ../engine.h
+CMakeFiles/Chess_Game_.dir/engine.cpp.o: ../object.h
 
 CMakeFiles/Chess_Game_.dir/main.cpp.o: ../Board.h
 CMakeFiles/Chess_Game_.dir/main.cpp.o: ../Header.h
